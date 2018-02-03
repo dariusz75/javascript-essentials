@@ -1,0 +1,47 @@
+<div>
+	<h2>Nested Routings</h2>
+	<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">CODE EXAMPLE</button>
+  <div id="demo" class="collapse">
+    <figure>
+		  <pre>
+		    <code class="language-javascript">
+		     var myApp = angular
+								.module('myApp', ['ui.router'])
+								.config(function ($stateProvider, $urlRouterProvider) {
+									$stateProvider
+										.state('home', {
+											url: '/home',
+											templateUrl: 'templates/home.html',
+											controller: 'homeController',
+											//abstract: true
+										})
+										.state('home.nested', {
+											url: '/nested',
+											templateUrl: 'templates/nested.html',
+											controller: 'nestedController'
+										})
+										.state('setup', {
+											url: '/setup',
+											templateUrl: 'templates/setup.html',
+											controller: 'setupController'
+										})
+										.state('module', {
+											url: '/module',
+											templateUrl: 'templates/module.html',
+											controller: 'moduleController'
+										})
+										.state('controller', {
+											url: '/controller',
+											templateUrl: 'templates/controller.html',
+											controller: 'controllerController'
+										})
+
+										//$urlRouterProvider.otherwise('/home');
+								})
+								})
+		    </code>
+		  </pre>
+		</figure>
+  </div>
+	<div class="line"></div>
+</div>

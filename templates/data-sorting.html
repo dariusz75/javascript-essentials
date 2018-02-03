@@ -1,0 +1,142 @@
+
+
+<div>
+	<h2>Data Sorting</h2>
+	<p>
+	The orderBy filter allows us to sort an array.
+	<br>
+	By default, strings are sorted alphabetically, and numbers are sorted numerically.
+	</P>
+	
+
+<div class="line"></div>
+	<figure>
+		<pre class="line-numbers padding-left" ng-prism>
+			<code class="language-javascript">
+.controller('myController', function ($scope) {
+												
+							var employees = [
+								{
+									name: 'Ben',
+									dateOfBirth: new Date('November 23, 1999'), 
+									gender: 'Male',
+									salary: 22222.959696,
+								},
+								{
+									name: 'Bill',
+									dateOfBirth: new Date('September 13, 1989'), 
+									gender: 'Male',
+									salary: 33333.76777,
+								},
+								{
+									name: 'Josh',
+									dateOfBirth: new Date('June 23, 1993'), 
+									gender: 'Male',
+									salary: 44444.6666,
+								},
+								{
+									name: 'Andrew',
+									dateOfBirth: new Date('January 13, 2000'), 
+									gender: 'Male',
+									salary: 55555.099,
+								},
+								{
+									name: 'John',
+									dateOfBirth: new Date('March 13, 2000'), 
+									gender: 'Male',
+									salary: 66666.999,
+								},
+							];
+
+							$scope.employees = employees;
+							$scope.sortColumn = 'name';
+
+						}
+	</code>
+		</pre>
+	</figure>
+<div class="line"></div>
+<figure>
+		<pre class="line-numbers padding-left" ng-prism>
+			<code class="language-markup">
+&lt;h3&gt;Sort by:&lt;/h3&gt;
+		&lt;select ng-model="sortColumn"&gt;
+			&lt;option value="+name"&gt;Name ASC&lt;/option&gt;
+			&lt;option value="-name"&gt;Name DSC&lt;/option&gt;
+			&lt;option value="+dateOfBirth">Date of Birth ASC&lt;/option&gt;
+			&lt;option value="-dateOfBirth">Date of Birth DSC&lt;/option&gt;
+			&lt;option value="+gender">Gender ASC&lt;/option&gt;
+			&lt;option value="-gender">Gender DSC&lt;/option&gt;
+			&lt;option value="+salary">Salary ASC&lt;/option&gt;
+			&lt;option value="-salary">Salary DSC&lt;/option&gt;
+		&lt;/select&gt;
+		&lt;table class="table"&gt;
+			&lt;thead&gt;
+				&lt;tr&gt;
+					&lt;th&gt;Name&lt;/th&gt;
+					&lt;th&gt;Date of birth&lt;/th&gt;
+					&lt;th&gt;Gender&lt;/th&gt;
+					&lt;th&gt;Salary&lt;/th&gt;
+				&lt;/tr&gt;
+			&lt;/thead&gt;
+			&lt;tbody&gt;
+				&lt;tr ng-repeat="employee in employees | orderBy: sortColumn"&gt;
+					&lt;td&gt;{{ employee.name}}&lt;/td&gt;
+					&lt;td&gt;{{ employee.dateOfBirth}}&lt;/td&gt;
+					&lt;td&gt;{{ employee.gender}}&lt;/td&gt;
+					&lt;td&gt;{{ employee.salary}}&lt;/td&gt;
+				&lt;/tr&gt;
+			&lt;/tbody&gt;
+		&lt;/table&gt;
+			</code>
+		</pre>
+	</figure>
+<div class="line"></div>
+
+<p>
+The above method allows us to organize data according to the selected option.
+<br>
+For this purpose we will use the select element.
+<br>
+$scope.sortColumn = 'name' in the controller means that we have assigned a default sort by the name.
+<br>
+Then in the select tag, we specify the options with which we want to sort the tables using 
++ for ascending and - for sescending.
+<br>
+Now we just set the sort method as sortColumn for ng-repeat in our table.
+</p>
+<div class="line"></div>
+	<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Working Example</button>
+  <div id="demo" class="collapse">
+   <h3>Sort by:</h3>
+		<select ng-model="sortColumn">
+			<option value="+name">Name ASC</option>
+			<option value="-name">Name DSC</option>
+			<option value="+dateOfBirth">Date of Birth ASC</option>
+			<option value="-dateOfBirth">Date of Birth DSC</option>
+			<option value="+gender">Gender ASC</option>
+			<option value="-gender">Gender DSC</option>
+			<option value="+salary">Salary ASC</option>
+			<option value="-salary">Salary DSC</option>
+		</select>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Date of birth</th>
+					<th>Gender</th>
+					<th>Salary</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="employee in employees | orderBy: sortColumn">
+					<td>{{ employee.name | uppercase }}</td>
+					<td>{{ employee.dateOfBirth | date:"dd/MM/yyyy"}}</td>
+					<td>{{ employee.gender | lowercase }}</td>
+					<td>{{ employee.salary | currency:"£" }}</td>
+				</tr>
+			</tbody>
+		</table>
+  </div>
+	<div class="line"></div>
+</div>

@@ -1,0 +1,96 @@
+
+
+<div>
+	<h2>AngularJS Events</h2>
+	<p>
+	AngularJS has its own HTML events directives.
+	<br>
+	The event directives allows us to run AngularJS functions at certain user events.
+	<br>
+	An AngularJS event will not overwrite an HTML event, both events will be executed.
+	</p>
+<div class="line"></div>
+	<figure>
+		<pre class="line-numbers padding-left" ng-prism>
+			<code class="language-javascript">
+var myApp = angular
+					.module('myModule', [])
+					.controller('myController', function ($scope) {
+											
+						var technologies = [
+							{
+							name: 'HTML5', 
+							likes: 0, 
+							dislikes: 0
+							},
+							{
+							name: 'CSS3', 
+							likes: 0, 
+							dislikes: 0
+							},
+							{
+							name: 'JavaScript', 
+							likes: 0, 
+							dislikes: 0
+							},
+							{
+							name: 'PHP', 
+							likes: 0, 
+							dislikes: 0
+							},
+
+						];
+
+						$scope.technologies = technologies;
+
+						$scope.incrementLikes = function (technology) {
+							technology.likes++
+						};
+
+						$scope.incrementDislikes = function (technology) {
+							technology.dislikes++
+						};								
+
+					});
+	</code>
+		</pre>
+	</figure>
+<div class="line"></div>
+<figure>
+		<pre class="line-numbers padding-left" ng-prism>
+			<code class="language-markup">
+&lt;tr ng-repeat="technology in technologies" &gt;
+	&lt;td&gt;{{ technology.name }}&lt;/td&gt;
+	&lt;td&gt;{{ technology.likes }}&lt;/td&gt;
+	&lt;td&gt;{{ technology.dislikes }}&lt;/td&gt;
+	&lt;td&gt;&lt;input type="button" value="Like" ng-click="incrementLikes(technology)"&gt;&lt;/td&gt;
+	&lt;td&gt;&lt;input type="button" value="Dislike" ng-click="incrementDislikes(technology)"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+			</code>
+		</pre>
+	</figure>
+<div class="line"></div>
+	<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Working Example</button>
+  <div id="demo" class="collapse">
+   <table class="table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Likes</th>
+					<th>Dislikes</th>
+					<th>Like/Dislike</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="technology in technologies" >
+					<td>{{ technology.name }}</td>
+					<td>{{ technology.likes }}</td>
+					<td>{{ technology.dislikes }}</td>
+					<td><input class="btn btn-primary" type="button" value="Like" ng-click="incrementLikes(technology)"></td>
+					<td><input class="btn btn-primary" type="button" value="Dislike" ng-click="incrementDislikes(technology)"></td>
+				</tr>
+			</tbody>
+		</table>
+  </div>
+	
+</div>

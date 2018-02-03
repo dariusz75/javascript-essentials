@@ -1,0 +1,97 @@
+
+
+<div>
+	<h2>Services</h2>
+	<p>
+		In AngularJS, a service is a function, or object, that is available for, and limited to, AngularJS application.
+	<br>
+		In AngularJS we can make our own service, or use one of the many built-in services.
+	</P>
+	
+<div class="line"></div>
+
+<p>Let's go through the example</p>
+
+<figure>
+		<pre class="line-numbers padding-left" ng-prism>
+<code class="language-javascript">
+&lt;tr&gt;
+	&lt;td&gt;Enter your text&lt;/td&gt;
+	&lt;td&gt;&lt;input type="text" ng-model="input">&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td&gt;Corrected text&lt;/td&gt;
+	&lt;td&gt;&lt;input type="text" ng-model="output">&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td&gt;&lt;/td&gt;
+	&lt;td&gt;&lt;input type="button" class="btn btn-info" value="Correct" ng-click="transformString(input)"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+</code>
+		</pre>
+	</figure>
+
+<p>
+	We declared ng-models: ng-model="input" and ng-model="outut"
+<br>
+	We also specified what we want to do when user clicks the button.
+<br>
+	For this we used ng-click directive with assigned function - ng-click="transformString()
+<br>
+Now we need to provide the data to the function. 
+<br>
+In our case it is an input data entered by the user - ng-click="transformString(input)
+<br>
+Finally we need to define the transformString() function in the controller. 
+</p>
+
+<div class="line"></div>
+
+	<figure>
+		<pre class="line-numbers padding-left" ng-prism>
+			<code class="language-javascript">
+.controller('myController', function ($scope) {
+												
+							$scope.transformString = function (input) {
+																				
+														var output = '';
+
+														if (!input) {
+															return input;
+														} 
+
+														for (var i = 0; i < input.length; i++) {
+															if (i > 0 && input[i] === input[i].toUpperCase()) {
+																output = output + ' ';
+															} 
+																output = output + input[i];															
+														}
+															
+														$scope.output = output;
+																	
+								}
+						});
+	</code>
+		</pre>
+
+<div class="line"></div>
+
+	<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Working Example</button>
+  <div id="demo" class="collapse">
+   <table class="table">
+			<tr>
+				<td>Enter your text</td>
+				<td><input type="text" ng-model="input"></td>
+			</tr>
+			<tr>
+				<td>Corrected text</td>
+				<td><input type="text" ng-model="output"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="button" class="btn btn-info" value="Correct" ng-click="transformString(input)"></td>
+			</tr>
+		</table>	
+  </div>
+	<div class="line"></div>
+</div>

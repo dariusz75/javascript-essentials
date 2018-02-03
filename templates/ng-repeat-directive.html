@@ -1,0 +1,107 @@
+
+<div>
+	<h2>ng-repeat Directive</h2>
+	<p>
+		The ng-repeat directive repeats a set of HTML, a given number of times.
+		<br>
+		If we have an collection of objects, the ng-repeat directive is perfect for making a HTML table, displaying one table row for each object, and one table data for each object property.
+	</p>
+
+<figure>
+		<pre class="line-numbers padding-left" ng-prism>
+			<code class="language-javascript">
+var myApp = angular
+				.module('myModule', [])
+				.controller('myController', function ($scope) {
+																var employees = [ 
+																				{ firstName: 'Ben', lastName: 'Hastings', gender: 'Male',salary: 5500 },
+																				{ firstName: 'John', lastName: 'Smith', gender: 'Male', salary: 6500 },
+																				{ firstName: 'Ana', lastName: 'Tylor', gender: 'Female', salary: 7500 },
+																				{ firstName: 'Josh', lastName: 'Maker', gender: 'Male', salary: 8500 },
+																				{ firstName: 'Sofia', lastName: 'Cool', gender: 'Female', salary: 9500 },
+																				];
+
+																var countries = [
+																				{
+																				name: 'UK',
+																				cities: [ {name: 'London'}, {name: 'Bristol'}, {name: 'Leeds'} ]
+																				},
+																				{
+																				name: 'Poland',
+																				cities: [ {name: 'Warsaw'}, {name: 'Krakow'}, {name: 'Poznan'} ]
+																				},
+																				{
+																				name: 'Germany',
+																				cities: [ {name: 'Berlin'}, {name: 'Hamburgh'}, {name: 'Frankfurt'} ]
+																				},
+																				];
+
+
+																$scope.employees = employees;
+																$scope.countries = countries;
+
+						});
+			</code>
+		</pre>
+	</figure>
+
+	<figure>
+		<pre class="line-numbers padding-left" ng-prism>
+			<code class="language-markup">
+&lt;div ng-controller="myController"&gt;	
+		&lt;table class="table"&gt;
+			&lt;thead&gt;
+				&lt;tr&gt;
+					&lt;th&gt;First Name&lt;/th&gt;
+					&lt;th&gt;Last Name&lt;/th&gt;
+					&lt;th&gt;Gender&lt;/th&gt;
+					&lt;th&gt;Salary&lt;/th&gt;
+				&lt;/tr&gt;
+			&lt;/thead&gt;
+			&lt;tbody&gt;
+				&lt;tr ng-repeat="employee in employees"&gt;
+					&lt;td&gt;{{ employee.firstName }}&lt;/td&gt;
+					&lt;td&gt;{{ employee.lastName }}&lt;/td&gt;
+					&lt;tdv{{ employee.gender }}&lt;/td&gt;
+					&lt;td&gt;{{ employee.salary }}&lt;/tdv
+				&lt;/tr&gt;
+			&lt;/tbody&gt;	
+		&lt;/table&gt;
+			</code>
+		</pre>
+	</figure>
+
+<p>
+Abowe we have a ng-repeat directive example.
+<br>
+The data in the table comes from the employees array which is located in the controller (myController in script.js file).
+<br>		
+We access to the employees array via the $scope.
+<br>
+Then, to use ng-repeat directive we need to specify refference name for each element in the array.
+In our case let's assign the name "employee".
+</p>
+	
+	<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Working Example</button>
+  <div id="demo" class="collapse">
+   <table class="table">
+			<thead>
+				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Gender</th>
+					<th>Salary</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="employee in employees">
+					<td>{{ employee.firstName }}</td>
+					<td>{{ employee.lastName }}</td>
+					<td>{{ employee.gender }}</td>
+					<td>{{ employee.salary }}</td>
+				</tr>
+			</tbody>	
+		</table>
+  </div>
+	<div class="line"></div>
+</div>

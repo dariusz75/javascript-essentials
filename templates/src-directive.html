@@ -1,0 +1,28 @@
+<div>
+	<h2>ng-src directive.</h2>
+	<p>Using AngularJS markup like {{hash}} in a src attribute doesn't work right: The browser will fetch from the URL with the literal text {{hash}} until AngularJS replaces the expression inside {{hash}}. The ngSrc directive solves this problem.</p>
+	<figure>
+		<pre class="line-numbers padding-left"  ng-prism>
+			<code class="language-javascript">
+var myApp = angular
+		.module('myModule', [])
+		.controller('registeredController', function ($scope) {
+
+												var country = {
+													flag: './img/GB.png'
+												};
+
+												$scope.country = country;
+
+											});
+			</code>
+		</pre>
+	</figure>
+	<figure>
+		<pre class="line-numbers padding-left"  ng-prism>
+<code class="language-javascript"> &lt;img ng-src="{{ country.flag }}" /&gt; </code>
+		</pre>
+	</figure>
+
+	<img ng-src="{{ country.flag }}" />
+</div>

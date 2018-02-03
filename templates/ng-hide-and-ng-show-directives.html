@@ -1,0 +1,224 @@
+
+
+<div>
+	<h2>ng-hide and ng-show Directives</h2>
+	<p>
+	The ng-show and ng-hide directives allow us to shoe or to hide html elements.
+	</P>
+	
+<div class="line"></div>
+<p>
+	Our task is to hide one of the table columns when you click on checkbox.
+<br>
+To do this, we need to assign a model to our checkbox.
+<br>
+In our case ng-model="hideSalary"
+</p>
+<p>
+	Then we assign the ng-hide directive to the elements that we want to hide.
+<br>
+	For example:
+</p>
+
+<figure>
+		<pre class="line-numbers padding-left" ng-prism>
+<code class="language-javascript">
+&lt;th ng-hide="hideSalary"&gt;Salary&lt;/th&gt;
+&lt;td ng-hide="hideSalary"&gt;{{ employee.salary | currency:"£" }}&lt;/td&gt;</code>
+		</pre>
+	</figure>
+
+<p>
+	Jako nazwe modelu dla dyrektywy ng-hide podajemy 'hideSalary'.
+	<br>
+	'hideSalary' nie jest dostepna jako zmienna w $scope object, poniewaz nie zadeklarowalismy jej w kontrolerze, w pliku script.js.
+	<br>
+	Skoro nie jest dostepna, to domyslnie posiada wartosc "false", a skoro jest "false" to w przypadku kiedy przypisujemy ja do dyrektywy "ng-hide", to nasza dyrektywa ng-hide nie dziala wiec element jest wyswietlany.
+	<br>
+	Po kliknieciu w checkbox zmieniamy wartosc modelu 'hideSalary' na true i tym samym wlaczamy dyrektywe ng-hide="hideSalary" ktora ukrywa okreslone elementy.
+</p>
+
+<div class="line"></div>
+
+	<figure>
+		<pre class="line-numbers padding-left" ng-prism>
+			<code class="language-javascript">
+.controller('myController', function ($scope) {
+												
+							var employees = [
+								{
+									name: 'Ben',
+									dateOfBirth: new Date('November 23, 1999'), 
+									gender: 'Male',
+									salary: 22222.959696,
+									city: 'London'
+								},
+								{
+									name: 'Bill',
+									dateOfBirth: new Date('September 13, 1989'), 
+									gender: 'Male',
+									salary: 33333.76777,
+									city: 'Moscow'
+								},
+								{
+									name: 'Josh',
+									dateOfBirth: new Date('June 23, 1993'), 
+									gender: 'Male',
+									salary: 44444.6666,
+									city: 'Berlin'
+								},
+								{
+									name: 'Andrew',
+									dateOfBirth: new Date('January 13, 2000'), 
+									gender: 'Male',
+									salary: 55555.099,
+									city: 'Warsaw'
+								},
+								{
+									name: 'John',
+									dateOfBirth: new Date('March 13, 2000'), 
+									gender: 'Male',
+									salary: 66666.999,
+									city: 'Paris',
+								},
+							];
+
+							$scope.employees = employees;
+
+						}
+	</code>
+		</pre>
+	</figure>
+<div class="line"></div>
+<figure>
+		<pre class="line-numbers padding-left" ng-prism>
+			<code class="language-markup">
+&lt;input type="checkbox" ng-model="hideSalary"&gt;
+&lt;thead&gt;
+	&lt;tr&gt;
+		&lt;th&gt;Name&lt;/th&gt;
+		&lt;th&gt;Date of birth&lt;/th&gt;
+		&lt;th&gt;City&lt;/th&gt;
+		&lt;th&gt;Gender&lt;/th&gt;
+		&lt;th ng-hide="hideSalary"&gt;Salary&lt;/th&gt;
+	&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+	&lt;tr ng-repeat="employee in employees | filter:searchText:exactMatch"&gt;
+		&lt;td&gt;{{ employee.name}}&lt;/td&gt;
+		&lt;td&gt;{{ employee.dateOfBirth}}&lt;/td&gt;
+		&lt;td&gt;{{ employee.city}}&lt;/td&gt;
+		&lt;td&gt;{{ employee.gender}}&lt;/td&gt;
+		&lt;td ng-hide="hideSalary"&gt;{{ employee.salary}}&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/tbody&gt;
+			</code>
+		</pre>
+	</figure>
+
+<div class="line"></div>
+	<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Working Example</button>
+  <div id="demo" class="collapse">
+   <input type="checkbox" ng-model="hideSalary"> Hide salary
+		<br><br>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Date of birth</th>
+					<th>City</th>
+					<th>Gender</th>
+					<th ng-hide="hideSalary">Salary</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="employee in employees">
+					<td>{{ employee.name | uppercase }}</td>
+					<td>{{ employee.dateOfBirth | date:"dd/MM/yyyy"}}</td>
+					<td>{{ employee.city }}</td>
+					<td>{{ employee.gender | lowercase }}</td>
+					<td ng-hide="hideSalary">{{ employee.salary | currency:"£" }}</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr style="border: solid 1px">
+
+<!--
+The ng-show and ng-hide directives allow us to shoe or to hide html elements.
+Our task is to hide one of the table columns when you click on checkbox.
+
+To do this, we need to assign a model to our checkbox.
+In our case 
+<input type="checkbox" ng-model="hideSalary">
+
+Then we assign the ng-hide directive to the elements that we want to hide.
+For example:
+<th ng-hide="hideSalary">Salary</th>
+<td ng-hide="hideSalary">{{ employee.salary | currency:"£" }}</td>
+
+Jako nazwe modelu dla dyrektywy ng-hide podajemy 'hideSalary'.
+'hideSalary' nie jest dostepna jako zmienna w $scope object, poniewaz nie zadeklarowalismy jej w kontrolerze, w pliku script.js.
+Skoro nie jest dostepna, to domyslnie posiada wartosc "false", a skoro jest "false" to w przypadku kiedy przypisujemy ja do dyrektywy "ng-hide",
+to nasza dyrektywa ng-hide nie dziala wiec element jest wyswietlany.
+
+Po kliknieciu w checkbox zmieniamy wartosc modelu 'hideSalary' na true i tym samym wlaczamy dyrektywe ng-hide="hideSalary" ktora ukrywa okreslone elementy.
+-->
+
+
+
+		<input type="checkbox" ng-model="hideSalaryAmounts"> Hide salary amounts
+		<br><br>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Date of birth</th>
+					<th>City</th>
+					<th>Gender</th>
+					<th ng-hide="hideSalaryAmounts">Salary</th>
+					<th ng-show="hideSalaryAmounts">Salary</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="employee in employees">
+					<td>{{ employee.name | uppercase }}</td>
+					<td>{{ employee.dateOfBirth | date:"dd/MM/yyyy"}}</td>
+					<td>{{ employee.city }}</td>
+					<td>{{ employee.gender | lowercase }}</td>
+					<td ng-hide="hideSalaryAmounts">{{ employee.salary | currency:"£" }}</td>
+					<td ng-show="hideSalaryAmounts">Top Secret!</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr style="border: solid 1px">
+
+
+		<input type="checkbox" ng-model="hideName"> Name
+		<input type="checkbox" ng-model="hideDoB"> DoB
+		<input type="checkbox" ng-model="hideCity"> City
+		<input type="checkbox" ng-model="hideGender"> Gender
+		<input type="checkbox" ng-model="hideSalary"> Hide Salary
+		<br><br>
+		<table class="table">
+			<thead>
+				<tr>
+					<th ng-hide="hideName">Name</th>
+					<th ng-hide="hideDoB">Date of birth</th>
+					<th ng-hide="hideCity">City</th>
+					<th ng-hide="hideGender">Gender</th>
+					<th ng-hide="hideSalary">Salary</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="employee in employees">
+					<td ng-hide="hideName">{{ employee.name | uppercase }}</td>
+					<td ng-hide="hideDoB">{{ employee.dateOfBirth | date:"dd/MM/yyyy"}}</td>
+					<td ng-hide="hideCity">{{ employee.city }}</td>
+					<td ng-hide="hideGender">{{ employee.gender | lowercase }}</td>
+					<td ng-hide="hideSalary">{{ employee.salary | currency:"£" }}</td>
+				</tr>
+			</tbody>
+		</table>	
+  </div>
+	<div class="line"></div>
+</div>

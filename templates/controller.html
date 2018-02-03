@@ -1,0 +1,119 @@
+<div>
+	<h2>Controller.</h2>
+	<p>The Angular controller is a JavaScript function.<br>
+			The task of the controller is to build a model for the view to display.</p>
+	<h4>How to create a controller</h4>
+	<p>Firstly we need to create constructor function so we are creating 
+			an anonymous function assigned to a variable.<br>
+			Next we are passing ($scope) parameter. <br>
+			The scope is the binding part between the HTML (view) and the JavaScript (controller). <br>
+			The scope is an object with the available properties and methods. <br>
+			The scope is available for both the view and the controller.</p>
+	<figure>
+		<pre class="line-numbers padding-left" ng-prism>
+			<code class="language-javascript">
+var myController = function ($scope) {
+
+	$scope.firstMessage = 'Angular Tutorial - first message';
+	$scope.secondMessage = 'Some text - second message';
+	$scope.thirdMessage = 'End of Angular Tutorial - third message'
+
+}
+</code>
+		</pre>
+	</figure>
+
+	<p>
+	Now we need to register controller to module.<br>
+	To register controller with module we need to use controller() function on our module, which takes two parameters. <br>
+	The 1st parameter is the name of our registered controller - any name we want (as long as it hasn't been used yet).<br>
+	The 2nd parameter is the name of the controller we created earlier which is myController variable.
+	</p>
+	
+	<figure>
+		<pre class="line-numbers padding-left" ng-prism>
+			<code class="language-javascript">
+myApp.controller('myRegisteredController', myController);
+			</code>
+		</pre>
+	</figure>
+
+	<p>
+	Now we need to assiociate our module and our controller with our html document.<br>
+	So in html tag we need to add the name of our module to ng-app directive in html tag.<br>
+	So for that we need to add in html tag the name of our module like 
+	</p>
+
+<figure>
+		<pre class="line-numbers padding-left" ng-prism>
+			<code class="language-markup">
+&lt;html ng-app="myModule"&gt;
+			</code>
+		</pre>
+	</figure>
+
+	<p>
+		And to display message stored in our controller object we need to add the name of our registered controller to the section we want to be linked with our controller.<br>
+		In this case is the body tag. 
+	</p>
+
+	<figure>
+			<pre class="line-numbers padding-left" ng-prism>
+				<code class="language-html">
+&lt;body ng-controller="myRegisteredController"&gt;
+				</code>
+			</pre>
+		</figure>
+
+
+
+	<p>
+	And in the div body in our html file we need to reference to the object property which is storing the information we want display.<br>
+	In our case:
+	</p>
+
+	<figure>
+		<pre class="line-numbers padding-left" ng-prism>
+			<code class="language-javascript">
+&lt;div&gt;{{ message }}&lt;/div&gt;
+			</code>
+		</pre>
+	</figure>
+
+	<h4>Module and controller chained</h4>
+	<p>
+	Instead of creating model and controller separately we can do it in one go.<br>
+	So instead of this.
+	</p>
+
+	<figure>
+		<pre class="line-numbers padding-left" ng-prism>
+			<code class="language-javascript">
+var myController = function ($scope) {
+	$scope.message = 'Angular Tutorial';
+	$scope.endMessage = 'The End of Angular Tutorial'
+}
+
+myApp.controller('registeredController', myController);
+			</code>
+		</pre>
+	</figure>
+
+	<p>We can do this</p>
+
+	<figure>
+		<pre class="line-numbers padding-left" ng-prism>
+			<code class="language-javascript">
+myApp.controller('registeredController', function ($scope) {
+	$scope.message = 'Angular Tutorial Start';
+	$scope.endMessage = 'The End of Angular Tutorial'
+});
+			</code>
+		</pre>
+	</figure>
+
+	<div class="line"></div>
+
+
+</div>
+

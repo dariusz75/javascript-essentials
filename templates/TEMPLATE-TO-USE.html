@@ -1,0 +1,58 @@
+
+<div>
+	<h2>ng-repeat Directive</h2>
+	<p>
+		The ng-repeat directive repeats a set of HTML, a given number of times.
+		<br>
+		If we have an collection of objects, the ng-repeat directive is perfect for making a HTML table, displaying one table row for each object, and one table data for each object property.
+	</p>
+
+
+
+
+	
+	<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">CODE EXAMPLE</button>
+  <div id="demo" class="collapse">
+    <figure>
+		  <pre>
+		    <code class="language-javascript">
+		     var myApp = angular
+								.module('myApp', ['ui.router'])
+								.config(function ($stateProvider, $urlRouterProvider) {
+									$stateProvider
+										.state('home', {
+											url: '/home',
+											templateUrl: 'templates/home.html',
+											controller: 'homeController',
+											//abstract: true
+										})
+										.state('home.nested', {
+											url: '/nested',
+											templateUrl: 'templates/nested.html',
+											controller: 'nestedController'
+										})
+										.state('setup', {
+											url: '/setup',
+											templateUrl: 'templates/setup.html',
+											controller: 'setupController'
+										})
+										.state('module', {
+											url: '/module',
+											templateUrl: 'templates/module.html',
+											controller: 'moduleController'
+										})
+										.state('controller', {
+											url: '/controller',
+											templateUrl: 'templates/controller.html',
+											controller: 'controllerController'
+										})
+
+										//$urlRouterProvider.otherwise('/home');
+								})
+								})
+		    </code>
+		  </pre>
+		</figure>
+  </div>
+	<div class="line"></div>
+</div>

@@ -1,0 +1,139 @@
+
+
+<div>
+	<h2>AngularJS Filters</h2>
+	<p>
+	Filters format the value of an expression for display to the user. They can be used in view templates, controllers or services. AngularJS comes with a collection of built-in filters, but it is easy to define your own as well.
+	</p>
+	<P>
+		Filters can be applied to expressions in view templates using the following syntax:
+	</P>
+	<figure>
+		<pre class="line-numbers padding-left" ng-prism>
+<code class="language-javascript"> {{ expression | filter }} </code>
+		</pre>
+	</figure>
+
+<p>E.g. the markup {{ 12 | currency }} formats the number 12 as a currency using the currency filter. The resulting value is $12.00.</p>
+
+<div class="line"></div>
+	<figure>
+		<pre class="line-numbers padding-left" ng-prism>
+			<code class="language-javascript">
+.controller('myController', function ($scope) {
+												
+							var employees = [
+								{
+									name: 'Ben',
+									dateOfBirth: new Date('November 23, 1999'), 
+									gender: 'Male',
+									salary: 22222.959696,
+								},
+								{
+									name: 'Claire',
+									dateOfBirth: new Date('November 13, 1989'), 
+									gender: 'Female',
+									salary: 33333.76777,
+								},
+								{
+									name: 'Josh',
+									dateOfBirth: new Date('November 23, 1993'), 
+									gender: 'Male',
+									salary: 44444.6666,
+								},
+								{
+									name: 'Benny',
+									dateOfBirth: new Date('November 13, 2000'), 
+									gender: 'Male',
+									salary: 55555.099,
+								},
+								{
+									name: 'John',
+									dateOfBirth: new Date('November 23, 1999'), 
+									gender: 'Male',
+									salary: 66662.959696,
+								},
+								{
+									name: 'Andrew',
+									dateOfBirth: new Date('November 13, 1989'), 
+									gender: 'Male',
+									salary: 77777.76777,
+								},
+								{
+									name: 'Josh',
+									dateOfBirth: new Date('November 23, 1993'), 
+									gender: 'Male',
+									salary: 88888.6666,
+								},
+								{
+									name: 'Betty',
+									dateOfBirth: new Date('November 13, 2000'), 
+									gender: 'Female',
+									salary: 99999.099,
+								},
+							];
+
+					$scope.employees = employees;
+					$scope.rowLimit = 2;
+
+											});
+	</code>
+		</pre>
+	</figure>
+<div class="line"></div>
+<figure>
+		<pre class="line-numbers padding-left" ng-prism>
+			<code class="language-markup">
+&lt;input type="number" step="1" min="0" max="" ng-model="rowLimit"&gt;
+&lt;tr ng-repeat="employee in employees | limitTo:rowLimit"&gt;
+	&lt;td&gt;{{ employee.name | uppercase }}&lt;/td&gt;
+	&lt;td&gt;{{ employee.dateOfBirth | date:"dd/MM/yyyy"}}&lt;/td&gt;
+	&lt;td&gt;{{ employee.gender | lowercase }}&lt;/td&gt;
+	&lt;td&gt;{{ employee.salary | number:2 }}&lt;/td&gt;
+	&lt;td&gt;{{ employee.salary | currency:"£" }}&lt;/td&gt;
+&lt;/tr&gt;
+			</code>
+		</pre>
+	</figure>
+<div class="line"></div>
+	<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Working Example</button>
+  <div id="demo" class="collapse">
+   <h4>Rows to display:</h4>
+		<input type="number" step="1" min="0" max="" ng-model="rowLimit">
+		<br><br>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Date of birth</th>
+						<th>Gender</th>
+						<th>Salary - number</th>
+						<th>Salary - currency</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="employee in employees | limitTo:rowLimit">
+						<td>{{ employee.name | uppercase }}</td>
+						<td>{{ employee.dateOfBirth | date:"dd/MM/yyyy"}}</td>
+						<td>{{ employee.gender | lowercase }}</td>
+						<td>{{ employee.salary | number:2 }}</td>
+						<td>{{ employee.salary | currency:"£" }}</td>
+					</tr>
+				</tbody>
+			</table>
+			<p>
+				This examle is showing how to use the Angular built-in filters.
+				<br>
+The filters used in this example include:
+<ul>
+<li>limitTo</li>
+<li>uppercase</li>
+<li>date</li>
+<li>lowercase</li>
+<li>number</li>
+<li>currency</li>
+</ul>
+			</p>
+  </div>
+	
+</div>

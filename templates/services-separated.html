@@ -1,0 +1,126 @@
+
+
+<div>
+	<h2>Services sapareted</h2>
+	<p>
+		To create the service as a separate file we need to use the factory() method.
+	<br>
+		As the first parameter, we give any name we want for our service to be named. In our example - factory('stringService, ...)
+	<br>
+	The second parameter is a anonymous function - factory('stringService, function(){})
+	<br>
+	The function in factory method returns an object.
+	<br>
+	We spacify the property name and assign the valu to it. In our example it is the function we want to use as our service.
+	</P>
+
+<figure>
+		<pre class="line-numbers padding-left" ng-prism>
+<code class="language-javascript">
+myApp.factory('stringService', function(){
+										return {
+												processString: function (input) {
+																				
+																				if (!input) {
+																					return input;
+																				} 
+
+																				var output = '';
+
+																				for (var i = 0; i < input.length; i++) {
+																					if (i > 0 && input[i] === input[i].toUpperCase() ) {
+																						output = output + ' ';
+																					} 
+																						output = output + input[i];															
+																				}
+
+																				return output;
+																			}
+														};
+													});
+</code>
+		</pre>
+	</figure>
+
+<div class="line"></div>
+
+<p>
+	Now, to start usin the service globally we need to inject it into the controller. 
+</p>
+
+<p>
+	Aby przypisac nasz serwis do kontrolera musimy podac jego nazwe w parametrze funkcji kontrolera zaraz po $scope.
+W naszym przypadku jest to stringService.
+<br>
+Nastepnie przypisujemy scopowi funkcje do ktorej bedziemy sie odnosic z poziomu pliku html, w dyrektywie ng-click
+i nadajemy jej dowolna nazwe, w naszym przypadku jest to putSpaces.
+<br>
+Nastepny krok, to przypisanie scopowi wartosci output ktora chcemy wyswietlic w oknie "Corrected Text",
+nazwiemy ja output.
+<br>
+$scope.output referuje do naszego servisu stringService za pomoco ktorego referujemy do funkcji processString(input).
+</p>
+
+
+	<figure>
+		<pre class="line-numbers padding-left" ng-prism>
+			<code class="language-javascript">
+.controller('myController', function ($scope, stringService) {
+												
+												$scope.putSpaces = function (input) {
+														
+													$scope.output = stringService.processString(input);
+
+												}
+											});
+
+	</code>
+		</pre>
+			</figure>
+
+<p>
+	Now wee need to declare ng-click directive.
+</p>
+
+<figure>
+		<pre class="line-numbers padding-left" ng-prism>
+			<code class="language-javascript">
+&lt;input type="button" value="Correct" ng-click="putSpaces(input)"&gt;
+	</code>
+		</pre>
+			</figure>
+
+<div class="line"></div>
+
+<p>The last think we need to do to make the service working is we need to attached the service file into our html document
+</p>
+
+	<figure>
+		<pre class="line-numbers padding-left" ng-prism>
+			<code class="language-javascript">
+&lt;script src="stringService.js"&gt;&lt;/script&gt;
+	</code>
+		</pre>
+			</figure>
+
+<div class="line"></div>
+
+	<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Working Example</button>
+  <div id="demo" class="collapse">
+   <table class="table">
+			<tr>
+				<td>Enter your text</td>
+				<td><input type="text" ng-model="input"></td>
+			</tr>
+			<tr>
+				<td>Corrected text</td>
+				<td><input type="text" ng-model="output"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="button" class="btn btn-info" value="Correct" ng-click="putSpaces(input)"></td>
+			</tr>
+		</table>	
+  </div>
+	<div class="line"></div>
+</div>

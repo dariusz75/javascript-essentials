@@ -1,0 +1,129 @@
+<div>
+	<h2>Data Binding</h2>
+	<p>
+		Data binding in AngularJS is the synchronization between the model and the view.<br>
+		AngularJS applications usually have a data model. The data model is a collection of data available for the application.
+	</p>
+	<p>AngularJS applications usually have a data model. The data model is a collection of data available for the application.</p>
+
+
+	<figure>
+		<pre class="line-numbers padding-left"  ng-prism>
+<code class="language-javascript">
+var myApp = angular
+				.module('myModule', [])
+				.controller('myController', function ($scope) {
+
+																var employee = {
+																	firstName: 'Ben',
+																	lastName: 'Hastings',
+																	gender: 'Male'
+																};
+
+																	$scope.message = 'Hallo Angular!';
+																	$scope.employeeExample = employee;
+
+																});</code>
+		</pre>
+	</figure>
+	<p>
+		The HTML container where the AngularJS application is displayed, is called the view.<br>
+		The view has access to the model, and there are several ways of displaying model data in the view.<br><br>
+		You can use the ng-bind directive, which will bind the innerHTML of the element to the specified model property:
+	</p>
+	<figure>
+		<pre class="line-numbers padding-left"  ng-prism>
+<code class="language-javascript">
+&lt;p ng-bind="firstName"&gt;&lt;/p&gt;</code>
+		</pre>
+	</figure>
+<p>You can also use double braces {{ }} to display content from the model:</p>
+<figure>
+		<pre class="line-numbers padding-left"  ng-prism>
+<code class="language-javascript">
+&lt;p &gt;First name: {{firstName}}&lt;/p&gt;</code>
+		</pre>
+	</figure>
+
+<h2>Two-way Data Binding</h2>
+<p>When data in the model changes, the view reflects the change, and when data in the view changes, the model is updated as well. <br>
+This happens immediately and automatically, which makes sure that the model and the view is updated at all times.
+</p>
+
+<figure>
+		<pre class="line-numbers padding-left"  ng-prism>
+<code class="language-markup">
+&lt;h3&gt;Two-way data binding - default input value comes controller&lt;/h3&gt;
+	&lt;div ng-controller="myController"&gt;
+		&lt;input type="text" ng-model="message" /&gt;
+		&lt;p&gt;{{ message }}&lt;/p&gt;
+	&lt;/div&gt;
+
+	&lt;h3>Two-way data binding example - no default value&lt;/h3>
+	&lt;p>Please type something in the input below&lt;/p>
+	&lt;div ng-controller="myController"
+		&lt;input type="text" ng-model="nonFromController" />
+		&lt;p>{{ nonFromController }}&lt;/p>
+	&lt;/div></code>
+		</pre>
+	</figure>
+
+<p>
+ng-model = "message" comes from js file and it contains text - Hallo Angular! 
+<br>
+Therefore, in the first input field and in the first paragraph, the same text appears.
+<br>
+By entering the text in the input field, we change its value in the paragraph, because we make two-way-databinding and Angular updates the model.
+<br>
+Then we have another input field and model ng-model = "nonFromController".
+This model does not come from the controller so it has no assigned text.
+<br>
+Angular will create and update the model and text that we enter in the second input box appears in the second paragraph.
+</p>
+
+	<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">CODE EXAMPLE</button>
+  <div id="demo" class="collapse">
+    <figure>
+		  <pre>
+		    <code class="language-javascript">
+		     var myApp = angular
+								.module('myApp', ['ui.router'])
+								.config(function ($stateProvider, $urlRouterProvider) {
+									$stateProvider
+										.state('home', {
+											url: '/home',
+											templateUrl: 'templates/home.html',
+											controller: 'homeController',
+											//abstract: true
+										})
+										.state('home.nested', {
+											url: '/nested',
+											templateUrl: 'templates/nested.html',
+											controller: 'nestedController'
+										})
+										.state('setup', {
+											url: '/setup',
+											templateUrl: 'templates/setup.html',
+											controller: 'setupController'
+										})
+										.state('module', {
+											url: '/module',
+											templateUrl: 'templates/module.html',
+											controller: 'moduleController'
+										})
+										.state('controller', {
+											url: '/controller',
+											templateUrl: 'templates/controller.html',
+											controller: 'controllerController'
+										})
+
+										//$urlRouterProvider.otherwise('/home');
+								})
+								})
+		    </code>
+		  </pre>
+		</figure>
+  </div>
+	<div class="line"></div>
+</div>
+

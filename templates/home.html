@@ -1,0 +1,50 @@
+<div>
+	<h2>Welcome to my AngularJS Essentials website.</h2>	
+	<p>This page is my private project and contains the basics of the Angular JS framework.</p>
+	<p>{{ message }}</p>
+	<a ui-sref=".nested" class="btn btn-primary">NESTED</a>
+	<ui-view></ui-view>
+	<div class="line"></div>
+	 <figure>
+		  <pre>
+		    <code class="language-javascript">
+		     var myApp = angular
+								.module('myApp', ['ui.router'])
+								.config(function ($stateProvider, $urlRouterProvider) {
+									$stateProvider
+										.state('home', {
+											url: '/home',
+											templateUrl: 'templates/home.html',
+											controller: 'homeController',
+											//abstract: true
+										})
+										.state('home.nested', {
+											url: '/nested',
+											templateUrl: 'templates/nested.html',
+											controller: 'nestedController'
+										})
+										.state('setup', {
+											url: '/setup',
+											templateUrl: 'templates/setup.html',
+											controller: 'setupController'
+										})
+										.state('module', {
+											url: '/module',
+											templateUrl: 'templates/module.html',
+											controller: 'moduleController'
+										})
+										.state('controller', {
+											url: '/controller',
+											templateUrl: 'templates/controller.html',
+											controller: 'controllerController'
+										})
+
+										//$urlRouterProvider.otherwise('/home');
+								})
+								})
+		    </code>
+		  </pre>
+		</figure>
+
+</div>
+

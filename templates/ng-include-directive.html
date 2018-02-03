@@ -1,0 +1,123 @@
+
+
+<div>
+	<h2>ng-include Directive</h2>
+	<p>
+		ng-include is one of Angular's most useful directives.
+	<br>
+		It is used to embed components in other components.
+	</P>
+	
+<div class="line"></div>
+
+
+<figure>
+		<pre class="line-numbers padding-left" ng-prism>
+<code class="language-javascript">
+&lt;th ng-hide="hideSalary"&gt;Salary&lt;/th&gt;
+&lt;td ng-hide="hideSalary"&gt;{{ employee.salary | currency:"£" }}&lt;/td&gt;</code>
+		</pre>
+	</figure>
+
+<p>
+	Jako nazwe modelu dla dyrektywy ng-hide podajemy 'hideSalary'.
+	<br>
+	'hideSalary' nie jest dostepna jako zmienna w $scope object, poniewaz nie zadeklarowalismy jej w kontrolerze, w pliku script.js.
+	<br>
+	Skoro nie jest dostepna, to domyslnie posiada wartosc "false", a skoro jest "false" to w przypadku kiedy przypisujemy ja do dyrektywy "ng-hide", to nasza dyrektywa ng-hide nie dziala wiec element jest wyswietlany.
+	<br>
+	Po kliknieciu w checkbox zmieniamy wartosc modelu 'hideSalary' na true i tym samym wlaczamy dyrektywe ng-hide="hideSalary" ktora ukrywa okreslone elementy.
+</p>
+
+<div class="line"></div>
+
+	<figure>
+		<pre class="line-numbers padding-left" ng-prism>
+			<code class="language-javascript">
+.controller('myController', function ($scope) {
+												
+							var employees = [
+								{
+									name: 'Ben',
+									dateOfBirth: new Date('November 23, 1999'), 
+									gender: 'Male',
+									salary: 22222.959696,
+									city: 'London'
+								},
+								{
+									name: 'Bill',
+									dateOfBirth: new Date('September 13, 1989'), 
+									gender: 'Male',
+									salary: 33333.76777,
+									city: 'Moscow'
+								},
+								{
+									name: 'Josh',
+									dateOfBirth: new Date('June 23, 1993'), 
+									gender: 'Male',
+									salary: 44444.6666,
+									city: 'Berlin'
+								},
+								{
+									name: 'Andrew',
+									dateOfBirth: new Date('January 13, 2000'), 
+									gender: 'Male',
+									salary: 55555.099,
+									city: 'Warsaw'
+								},
+								{
+									name: 'John',
+									dateOfBirth: new Date('March 13, 2000'), 
+									gender: 'Male',
+									salary: 66666.999,
+									city: 'Paris',
+								},
+							];
+
+							$scope.employees = employees;
+							$scope.employeeTable = 'components/employee-table.html';
+							$scope.employeeList = 'components/employee-list.html';
+							$scope.defaultDisplay = 'components/employee-table.html';
+
+						}
+	</code>
+		</pre>
+	</figure>
+<div class="line"></div>
+<figure>
+		<pre class="line-numbers padding-left" ng-prism>
+			<code class="language-markup">
+&lt;div ng-include="'components/hard-coded-employee-table.html'"&gt;&lt;/div&gt;
+
+&lt;div ng-include="employeeTable">&lt;/div&gt;
+
+&lt;select ng-model="defaultDisplay"&gt;
+	&lt;option value="components/employee-table.html"&gt;Table&lt;/option&gt;
+	&lt;option value="components/employee-list.html"&gt;List&lt;/option&gt;
+&lt;/select&gt;
+&lt;div ng-include="defaultDisplay"&gt;&lt;/div&gt;
+			</code>
+		</pre>
+	</figure>
+
+<div class="line"></div>
+	<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Working Example</button>
+  <div id="demo" class="collapse">
+   <h3>Component embeded from it's path</h3>
+		<div ng-include="'components/hard-coded-employee-table.html'"></div>
+		<br><br>
+
+		<h3>Component embeded from the controller</h3>
+		<div ng-include="employeeTable"></div>
+		<br><br>
+
+		<h3>Select view example</h3>
+		<select ng-model="defaultDisplay">
+			<option value="components/employee-table.html">Table</option>
+			<option value="components/employee-list.html">List</option>
+		</select>
+		<div ng-include="defaultDisplay"></div>
+		<br><br>	
+  </div>
+	<div class="line"></div>
+</div>
