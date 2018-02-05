@@ -1,0 +1,16 @@
+<h3>TEST SIDE NAV</h3>
+<ul class="list-unstyled components">
+    <li class="active">
+        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Setup</a>
+        <ul class="collapse list-unstyled" id="homeSubmenu">
+          <li><a href="#">Sub 1</a></li>
+          <li><a href="#">Sub 2</a></li>
+          <li><a href="#">Sub 3</a></li>
+        </ul>
+    </li>
+</ul>
+<ul class="list-unstyled components">
+  <li ng-repeat="chapter in chapters">
+    <a ui-sref="{{ chapter.url }}">{{ chapter.chapterName }}</a>
+  </li>
+</ul>

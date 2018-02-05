@@ -8,6 +8,12 @@ var myApp = angular
 									controller: 'homeController',
 									//abstract: true
 								})
+								.state('page-1', {
+									url: '/page-1',
+									templateUrl: 'templates/side-nav-templates/angular-side-nav.html',
+									//controller: 'homeController',
+									//abstract: true
+								})
 								.state('home.nested', {
 									url: '/nested',
 									templateUrl: 'templates/nested.html',
