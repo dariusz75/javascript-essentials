@@ -28,7 +28,7 @@ a, a:hover, a:focus {
     background: #fff;
     border: none;
     border-radius: 0;
-    margin-bottom: 40px;
+    margin-bottom: 0px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -68,6 +68,10 @@ a, a:hover, a:focus {
 #sidebar .sidebar-header {
     padding: 20px;
     background: #6d7fcc;
+}
+
+#sidebar .sidebar-header img {
+    max-height: 50px;
 }
 
 #sidebar ul.components {
@@ -229,4 +233,11 @@ a.article, a.article:hover {
 
 h1, h2, h3, h4 {
     margin-bottom: 0px;
+}
+
+  /* ----------------------------------------
+        home peage styles
+------------------------------------------ */
+.home-page-container {
+ padding: 20px 50px;
 }

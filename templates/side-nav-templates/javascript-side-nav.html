@@ -1,9 +1,8 @@
 <div class="wrapper">
     <!-- Sidebar Holder -->
-
     <nav id="sidebar">
         <div class="sidebar-header">
-            <img src="../img/AngularJS_logo.svg" class="img-responsive" alt="Cinque Terre">
+            <img src="../img/JavaScript_logo.svg" class="img-responsive" alt="Cinque Terre">
         </div>
         <ul class="list-unstyled components">
             <li class="active">
@@ -20,13 +19,14 @@
             <a ui-sref="{{ chapter.url }}">{{ chapter.chapterName }}</a>
           </li>
         </ul>
-      </nav>   
+      </nav>  
     
 
     <!-- Page Content -->
     <div id="content" >
-      <h1>Angular Essentials</h1>
+        <h1>JavaScript Essentials</h1>
       
-      <ui-view></ui-view>
+      <div ui-view="main-content-view"></div>
     </div> <!-- content end -->
   </div> <!-- wrapper end -->
+

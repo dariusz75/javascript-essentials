@@ -15,62 +15,26 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="prism.css">
 <body  ng-app="myApp">
-  <div class="wrapper">
-    <!-- Sidebar Holder -->
-    <nav id="sidebar" ng-controller="sidebarController">
-      <div class="sidebar-header">
-          <h3>JS Essentials</h3>
-      </div>
-     
-      <ul class="list-unstyled components">
-          <li class="active">
-              <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Setup</a>
-              <ul class="collapse list-unstyled" id="homeSubmenu">
-                <li><a href="#">Sub 1</a></li>
-                <li><a href="#">Sub 2</a></li>
-                <li><a href="#">Sub 3</a></li>
-              </ul>
-          </li>
-      </ul>
-      <ul class="list-unstyled components">
-        <li ng-repeat="chapter in chapters">
-          <a ui-sref="{{ chapter.url }}">{{ chapter.chapterName }}</a>
-        </li>
-      </ul>
-    </nav>
-
-    <!-- Page Content -->
-    <div id="content" >
-
-      <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
               <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
                   <i class="glyphicon glyphicon-align-left"></i>
-                  <span>Toggle Sidebar</span>
+                  <span>Sidebar</span>
               </button>
           </div>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
               <li><a href="#/home">Home</a></li>
-              <li><a href="#/page-1">Page 1</a></li>
-              <li><a href="#">Page 2</a></li>
-              <li><a href="#">Page 3</a></li>
+              <li><a href="#/javascript">JavaScript</a></li>
+              <li><a href="#/angular">AngularJS</a></li>     
             </ul>
           </div>
         </div>
       </nav>
-
-      <ui-view class="main"></ui-view>
-      
-    </div> <!-- content end -->
-  </div> <!-- wrapper end -->
-
-
-
-
-
-        <!-- jQuery CDN -->
+      <ui-view></ui-view>
+    
+      <!-- jQuery CDN -->
          <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
          <!-- Bootstrap Js CDN -->
          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
