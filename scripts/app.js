@@ -19,92 +19,102 @@ var myApp = angular
 								.state('angular.module', {
 									url: '/module',
 									//abstract: true,
-									templateUrl: 'templates/module.html',
+									templateUrl: 'templates/angular/module.html',
 									controller: 'moduleController'	
 								})
 								.state('angular.controller', {
 									url: '/controller',
-									templateUrl: 'templates/controller.html',
+									templateUrl: 'templates/angular/controller.html',
 									controller: 'controllerController'
 								})
 								.state('angular.src-directive', {
 									url: '/src-directive',
-									templateUrl: 'templates/src-directive.html',
+									templateUrl: 'templates/angular/src-directive.html',
 									controller: 'srcDirectiveController'
 								})
 								.state('angular.two-way-databinding', {
 									url: '/two-way-databinding',
-									templateUrl: 'templates/two-way-databinding.html'
+									templateUrl: 'templates/angular/two-way-databinding.html'
 								})
 								.state('angular.ng-repeat-directive', {
 									url: '/ng-repeat-directive',
-									templateUrl: 'templates/ng-repeat-directive.html',
+									templateUrl: 'templates/angular/ng-repeat-directive.html',
 									controller: 'ngRepeatController'
 								})
 								.state('angular.events-handling', {
 									url: '/events-handling',
-									templateUrl: 'templates/events-handling.html',
+									templateUrl: 'templates/angular/events-handling.html',
 									controller: 'eventsHandlingController'
 								})
 								.state('angular.filters', {
 									url: '/filters',
-									templateUrl: 'templates/filters.html',
+									templateUrl: 'templates/angular/filters.html',
 									controller: 'filtersController'
 								})
 								.state('angular.data-sorting', {
 									url: '/data-sorting',
-									templateUrl: 'templates/data-sorting.html',
+									templateUrl: 'templates/angular/data-sorting.html',
 									controller: 'dataSortingController'
 								})
 								.state('angular.data-sorting-by-search-filter', {
 									url: '/data-sorting-by-search-filter',
-									templateUrl: 'templates/data-sorting-by-search-filter.html',
+									templateUrl: 'templates/angular/data-sorting-by-search-filter.html',
 									controller: 'dataSortingController'
 								})
 								.state('angular.data-sorting-by-multiple-properties', {
 									url: '/data-sorting-by-multiple-properties',
-									templateUrl: 'templates/data-sorting-by-multiple-properties.html',
+									templateUrl: 'templates/angular/data-sorting-by-multiple-properties.html',
 									controller: 'filtersController'
 								})
 								.state('angular.ng-hide-and-ng-show-directives', {
 									url: '/ng-hide-and-ng-show-directives',
-									templateUrl: 'templates/ng-hide-and-ng-show-directives.html',
+									templateUrl: 'templates/angular/ng-hide-and-ng-show-directives.html',
 									controller: 'filtersController'
 								})
 								.state('angular.ng-include-directive', {
 									url: '/ng-include-directive',
-									templateUrl: 'templates/ng-include-directive.html',
+									templateUrl: 'templates/angular/ng-include-directive.html',
 									controller: 'filtersController'
 								})
 								.state('angular.services', {
 									url: '/services',
-									templateUrl: 'templates/services.html',
+									templateUrl: 'templates/angular/services.html',
 									controller: 'servicesController'
 								})
 								.state('angular.services-separated', {
 									url: '/services-separated',
-									templateUrl: 'templates/services-separated.html',
+									templateUrl: 'templates/angular/services-separated.html',
 									controller: 'servicesSeparatedContorller'
 								})
 								.state('angular.anchorscroll-service', {
 									url: '/anchorscroll-service',
-									templateUrl: 'templates/anchorscroll-service.html'
+									templateUrl: 'templates/angular/anchorscroll-service.html'
 								})
 								.state('angular.routing', {
 									url: '/routing',
-									templateUrl: 'templates/routing.html'
+									templateUrl: 'templates/angular/routing.html'
 								})
 								.state('angular.nested-routing', {
 									url: '/nested-routing',
-									templateUrl: 'templates/nested-routing.html'
+									templateUrl: 'templates/angular/nested-routings.html'
 								})
 								.state('javascript', {
 									url: '/javascript',
 									templateUrl: 'templates/side-nav-templates/javascript-side-nav.html',
-									controller: 'testController',
-									//abstract: true
+									controller: 'sidebarEs6Controller',
 								})
-
+								.state('javascript.var', {
+									url: '/var',
+									templateUrl: 'templates/es6/var.html'
+								})
+								.state('javascript.let', {
+									url: '/let',
+									templateUrl: 'templates/es6/let.html'
+								})
+								.state('javascript.const', {
+									url: '/const',
+									templateUrl: 'templates/es6/const.html'
+								})
 								//$urlRouterProvider.otherwise('/home');
 						})
 						.controller('moduleController', function($scope) {
@@ -324,25 +334,23 @@ var myApp = angular
 
 							$scope.chapters = chapters;
 						})
-						.controller('testController', function($scope) {
+						.controller('sidebarEs6Controller', function($scope) {
 							var chapters = [
-															{chapterName: 'JS 1', url: '.module'},
-															{chapterName: 'JS 2', url: '.controller'},
-															{chapterName: 'JS 3', url: '.src-directive'},
-															{chapterName: 'JS 4', url: '.two-way-databinding'},
-															{chapterName: 'JS 5', url: '.ng-repeat-directive'},
-															{chapterName: 'JS 6', url: '.events-handling'},
-															{chapterName: 'JS 7', url: '.filters'},
-															{chapterName: 'JS 8', url: '.data-sorting'},
-															{chapterName: 'JS 9', url: '.data-sorting-by-search-filter'},
-															{chapterName: 'JS 10', url: '.data-sorting-by-multiple-properties'},
-															{chapterName: 'JS 11', url: '.ng-hide-and-ng-show-directives'},
-															{chapterName: 'JS 12', url: '.ng-include-directive'},
-															{chapterName: 'JS 13', url: '.services'},
-															{chapterName: 'JS 14', url: '.services-separated'},
-															{chapterName: 'JS 15', url: '.anchorscroll-service'},
-															{chapterName: 'JS 16', url: '.routing'},
-															{chapterName: 'JS 17', url: '.nested-routing'} 
+															{chapterName: 'var', url: '.var'},
+															{chapterName: 'let', url: '.let'},
+															{chapterName: 'const', url: '.const'},
+															{chapterName: 'Template Literals', url: '.template-literals'},
+															{chapterName: 'Default Parameter Values', url: '.default-parameter-values'},
+															{chapterName: 'Rest parameter', url: '.rest-parameter'},
+															{chapterName: 'Spread Operator', url: '.spread-operator'},
+															{chapterName: 'Arrow Functions', url: '.arrow-functions'},
+															{chapterName: 'Objects - Property Initializer Shorthand', url: '.property-initializer-shorthand'},
+															{chapterName: 'Objects - Concise Methods', url: '.concise-methods'},
+															{chapterName: 'Object.is() Method', url: '.object-is'},
+															{chapterName: 'Object.assign() Method', url: '.object-assign'},
+															{chapterName: 'Destructuring assignment', url: '.destructuring-assignment'},
+															{chapterName: 'Sets', url: '.sets'},
+															{chapterName: 'Classes', url: '.classes'}
 															];
 
 							$scope.chapters = chapters;
