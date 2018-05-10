@@ -1,38 +1,80 @@
 
 <div>
 	<h2>var</h2>
-	<p>
-		test.....
-		<br>
-test...	</p>
-
-
-
+	<p>To understand the differences between let, const and var, let us recall the basic
+		behaviour of var.
+	</p>
+	<br>
 <div>
-	<h2>ng-src directive.</h2>
-	<p>Using AngularJS markup like {{hash}} in a src attribute doesn't work right: The browser will fetch from the URL with the literal text {{hash}} until AngularJS replaces the expression inside {{hash}}. The ngSrc directive solves this problem.</p>
+<figure>
+		<pre class="line-numbers padding-left"  ng-prism>
+			<code class="language-javascript">
+function getValue(condition) {
+
+	if (condition) {
+		var value = 'blue';
+		return value;
+	} else {
+		return null;
+	}
+	
+}
+
+console.log(getValue(23)); </code>
+		</pre>
+	</figure>
+	<br>
+	<p>You might expect the variable value to be created only if condition evaluates to true. 
+		In fact, the variable value is created regardless. <br>
+		Behind the scenes, the JavaScript engine changes the getValue function to look like this:		
+	</p>
+
 	<figure>
 		<pre class="line-numbers padding-left"  ng-prism>
 			<code class="language-javascript">
-var myApp = angular
-		.module('myModule', [])
-		.controller('registeredController', function ($scope) {
+function getValue2(condition) {
 
-												var country = {
-													flag: './img/GB.png'
-												};
+	var value;
 
-												$scope.country = country;
+	if (condition) {
+		value = "red";
+		return value;
+	} else {
+		return null;
+	}
+	
+}
 
-											});
-			</code>
+console.log(getValue2(33));	</code>
 		</pre>
 	</figure>
+	<br>
+
+	<p>The declaration of value is hoisted to the top, and the initialization
+		remains in the same spot. That means the variable value is still accessible
+		from within the else block.
+	</p>
+
 	<figure>
 		<pre class="line-numbers padding-left"  ng-prism>
-<code class="language-javascript"> &lt;img ng-src="{{ country.flag }}" /&gt; </code>
+			<code class="language-javascript">
+function getValue3(condition) {
+
+	if (condition) {
+		var value;
+		value = "GREEN";
+	} else {
+		value = null;
+	}
+	
+	return value;
+	
+}
+
+console.log(getValue3(1));	</code>
 		</pre>
 	</figure>
+	<br>
 
-
+	<a class="btn btn-primary" href="http://jsbin.com/decuji/edit?js,console" target="_blank">JS Bin</a>
 </div>

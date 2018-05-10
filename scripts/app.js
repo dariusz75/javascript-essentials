@@ -107,13 +107,70 @@ var myApp = angular
 									url: '/var',
 									templateUrl: 'templates/es6/var.html'
 								})
-								.state('javascript.let', {
+								.state('es6', {
+									url: '/es6',
+									templateUrl: 'templates/side-nav-templates/es6-side-nav.html',
+									controller: 'sidebarEs6Controller',
+								})
+								.state('es6.var', {
+									url: '/var',
+									templateUrl: 'templates/es6/var.html'
+								})
+								.state('es6.let', {
 									url: '/let',
 									templateUrl: 'templates/es6/let.html'
 								})
-								.state('javascript.const', {
+								.state('es6.const', {
 									url: '/const',
 									templateUrl: 'templates/es6/const.html'
+								})
+								.state('es6.template-literals', {
+									url: '/template-literals',
+									templateUrl: 'templates/es6/template-literals.html'
+								})
+								.state('es6.default-parameter-values', {
+									url: '/default-parameter-values',
+									templateUrl: 'templates/es6/default-parameter-values.html'
+								})
+								.state('es6.rest-parameter', {
+									url: '/rest-parameter',
+									templateUrl: 'templates/es6/rest-parameter.html'
+								})
+								.state('es6.spread-operator', {
+									url: '/spread-operator',
+									templateUrl: 'templates/es6/spread-operator.html'
+								})
+								.state('es6.arrow-functions', {
+									url: '/arrow-functions',
+									templateUrl: 'templates/es6/arrow-functions.html'
+								})
+								.state('es6.property-initializer-shorthand', {
+									url: '/property-initializer-shorthand',
+									templateUrl: 'templates/es6/property-initializer-shorthand.html'
+								})
+								.state('es6.concise-methods', {
+									url: '/concise-methods',
+									templateUrl: 'templates/es6/concise-methods.html'
+								})
+								.state('es6.object-is', {
+									url: '/object-is',
+									templateUrl: 'templates/es6/object-is.html'
+								})
+								.state('es6.object-assign', {
+									url: '/object-assign',
+									templateUrl: 'templates/es6/object-assign.html'
+								})
+								.state('es6.destructuring-assignment', {
+									url: '/destructuring-assignment',
+									templateUrl: 'templates/es6/destructuring-assignment.html'
+								})
+								.state('es6.sets', {
+									url: '/sets',
+									templateUrl: 'templates/es6/sets.html'
+								})
+								.state('es6.classes', {
+									url: '/classes',
+									templateUrl: 'templates/es6/classes.html'
 								})
 								//$urlRouterProvider.otherwise('/home');
 						})
