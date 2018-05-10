@@ -1,38 +1,76 @@
 
 <div>
-	<h2>Template Literals</h2>
-	<p>
-		test.....
+		<h2>Template Literals</h2>
+		<p>
+			At their simplest, template literals act like regular strings delimited by
+			backticks (`) instead of double or single quotes.<br>
+			Example:
+		</p>
 		<br>
-test...	</p>
-
-
-
-<div>
-	<h2>ng-src directive.</h2>
-	<p>Using AngularJS markup like {{hash}} in a src attribute doesn't work right: The browser will fetch from the URL with the literal text {{hash}} until AngularJS replaces the expression inside {{hash}}. The ngSrc directive solves this problem.</p>
+	<div>
 	<figure>
-		<pre class="line-numbers padding-left"  ng-prism>
-			<code class="language-javascript">
-var myApp = angular
-		.module('myModule', [])
-		.controller('registeredController', function ($scope) {
+			<pre class="line-numbers padding-left"  ng-prism>
+				<code class="language-javascript">
+let message = `Hello world!`;</code>
+			</pre>
+		</figure>
+		<br>
+		<p>
+			If making the text align with proper indentation is important to you,
+			consider leaving the first line of a multiline template literal empty and then
+			indenting after that, as follows:		
+		</p>
+		<a class="btn btn-primary" href="http://jsbin.com/diqociz/edit?js,console" target="_blank">JS Bin</a>
+		<br><br>
+		<p>
+			This code begins the template literal on the first line but doesn’t have
+			any text until the second line. The HTML tags are indented to look correct
+			and then the trim() method is called to remove the initial empty line.
+		</p>
+		<p>
+				Substitutions<br>
+				Substitutions allow you to embed any valid JavaScript expression
+				inside a template literal and output the result as part of the string.
+				Substitutions are delimited by an opening ${ and a closing } that can
+				have any JavaScript expression inside.<br>
+				Example:
+		</p>
+		<figure>
+			<pre class="line-numbers padding-left"  ng-prism>
+				<code class="language-javascript">
+let name = "Nicholas";
+let message = `Hello, ${name}.`;
 
-												var country = {
-													flag: './img/GB.png'
-												};
+console.log(message); // "Hello, Nicholas."</code>
+			</pre>
+		</figure>
+		<br>
+	
+		<p>
+			The substitution ${name} accesses the local variable name and inserts it
+			into the message string.
+		</p>
+		<p>
+			Because all substitutions are JavaScript expressions, you can substitute
+			more than just simple variable names. You can easily embed calculations,
+			function calls, and more.<br>
+			Example:
+		</p>
+		<figure>
+			<pre class="line-numbers padding-left"  ng-prism>
+				<code class="language-javascript">
+let count = 10;
+let price = 0.25;
 
-												$scope.country = country;
+let message = `${count} items cost $${(count * price).toFixed(2)}.`;
 
-											});
-			</code>
-		</pre>
-	</figure>
-	<figure>
-		<pre class="line-numbers padding-left"  ng-prism>
-<code class="language-javascript"> &lt;img ng-src="{{ country.flag }}" /&gt; </code>
-		</pre>
-	</figure>
-
-
-</div>
+console.log(message); // "10 items cost $2.50."</code>
+			</pre>
+		</figure>
+		<br>
+	
+		<a class="btn btn-primary" href="http://jsbin.com/diqociz/edit?js,console" target="_blank">JS Bin</a>
+	
+		
+	</div>
+	
