@@ -1,38 +1,127 @@
 
 <div>
 	<h2>let</h2>
+	<p>Block scoping is how many C-based languages work, and the introduction
+		of block-level declarations in ECMAScript 6 is intended to provide that
+		same flexibility (and uniformity) to JavaScript.
+	</p>
 	<p>
-		test.....
-		<br>
-test...	</p>
-
-
-
+		Block-level declarations declare bindings that are inaccessible outside a
+		given block scope. Block scopes, also called lexical scopes, are created in the
+		following places:<br>
+		• Inside a function<br>
+		• Inside a block (indicated by the { and } characters)
+	</p>
+	<p>
+		<strong>let Declarations</strong><br>
+		The let declaration syntax is the same as the syntax for var. You can basically
+		replace var with let to declare a variable but it will limit the variable’s scope
+		to only the current code block. Because let declarations are not hoisted to the top of the enclosing block, it’s best
+		to place let declarations first in the block so they’re available to the entire
+		block. <br>
+		Here’s an example:
+	</p>
+	<br>
 <div>
-	<h2>ng-src directive.</h2>
-	<p>Using AngularJS markup like {{hash}} in a src attribute doesn't work right: The browser will fetch from the URL with the literal text {{hash}} until AngularJS replaces the expression inside {{hash}}. The ngSrc directive solves this problem.</p>
+<figure>
+		<pre class="line-numbers padding-left"  ng-prism>
+			<code class="language-javascript">
+function getValue(condition) {
+
+	if (condition) {
+		let value = 'blue';
+		return value;
+	} else {
+		return null;
+	}
+	
+}
+
+console.log(getValue(23)); 
+//returns "blue"</code>
+		</pre>
+	</figure>
+	<br>
+
 	<figure>
 		<pre class="line-numbers padding-left"  ng-prism>
 			<code class="language-javascript">
-var myApp = angular
-		.module('myModule', [])
-		.controller('registeredController', function ($scope) {
+function getValue2(condition) {
 
-												var country = {
-													flag: './img/GB.png'
-												};
+	let value;
 
-												$scope.country = country;
+	if (condition) {
+		value = "red";
+		return value;
+	} else {
+		return null;
+	}
+	
+}
 
-											});
-			</code>
+console.log(getValue2(33)); 
+//returns "red"</code>
 		</pre>
 	</figure>
+	<br>
+
 	<figure>
 		<pre class="line-numbers padding-left"  ng-prism>
-<code class="language-javascript"> &lt;img ng-src="{{ country.flag }}" /&gt; </code>
+			<code class="language-javascript">
+function getValue3(condition) {
+
+	if (condition) {
+		let value;
+		value = "GREEN";
+	} else {
+		value = null;
+	}
+	
+	return value;
+	
+}
+
+console.log(getValue3(1));
+//returns "value is not defined"
+//The declaration of value is not hoisted to the top, it stays inside the block where was declared.</code>
 		</pre>
 	</figure>
+	<br>
 
+	<a class="btn btn-primary" href="http://jsbin.com/govisa/edit?js,console" target="_blank">JS Bin</a>
+	<br><br>
+<p>
+	If an identifier has already been defined in a scope, using the identifier
+in a let declaration inside that scope causes an error to be thrown. For example:
+<br>
+
+</p>
+<figure>
+	<pre class="line-numbers padding-left"  ng-prism>
+		<code class="language-javascript">
+//It will throw the error:
+
+var value1 = 111;
+console.log(value1);
+
+let value1 = 222;
+console.log(value1);
+
+
+//It will not throw the error:
+	
+var value1 = 111;
+console.log(value1);
+
+{
+let value1 = 222;
+console.log(value1);
+}</code>
+	</pre>
+</figure>
+<br>
+
+
+<a class="btn btn-primary" href="http://jsbin.com/leduzis/edit?js,console" target="_blank">JS Bin</a>
 
 </div>

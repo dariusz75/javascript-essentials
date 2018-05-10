@@ -2,37 +2,79 @@
 <div>
 	<h2>const</h2>
 	<p>
-		test.....
-		<br>
-test...	</p>
+	Constants, like let declarations, are block-level declarations. That means
+	constants are no longer accessible once execution flows out of the block
+	in which they were declared, and declarations are not hoisted.
+	<br>
+	Every const binding must be initialized on declaration, as shown in this example:
+	</p>
 
 
+<figure>
+	<pre class="line-numbers padding-left"  ng-prism>
+		<code class="language-javascript">
+// valid constant
+const maxItems = 30;
 
-<div>
-	<h2>ng-src directive.</h2>
-	<p>Using AngularJS markup like {{hash}} in a src attribute doesn't work right: The browser will fetch from the URL with the literal text {{hash}} until AngularJS replaces the expression inside {{hash}}. The ngSrc directive solves this problem.</p>
-	<figure>
+// syntax error: missing initialization
+const maxItems;</code>
+	</pre>
+</figure>
+<br>
+<p>
+In similarity to let, a const declaration throws an error when
+made with an identifier for an already defined variable in the same scope.
+It doesn’t matter whether that variable was declared using var  or let. 
+For example:
+</p>
+<figure>
+	<pre class="line-numbers padding-left"  ng-prism>
+		<code class="language-javascript">
+var message = "Hello!";
+let age = 25;
+
+// each of these throws an error
+const message = "Goodbye!";
+const age = 30;</code>
+	</pre>
+</figure>
+<br>
+<p>
+The abowe two const declarations would be valid alone, but given the previous
+var and let declarations in this case, they are syntax errors.
+</p>
+<p>
+Much like constants in other languages, the const can’t
+be assigned a new value later on.
+</p>
+<figure>
 		<pre class="line-numbers padding-left"  ng-prism>
 			<code class="language-javascript">
-var myApp = angular
-		.module('myModule', [])
-		.controller('registeredController', function ($scope) {
-
-												var country = {
-													flag: './img/GB.png'
-												};
-
-												$scope.country = country;
-
-											});
-			</code>
+const items = 5;
+items = 6;
+// throws an error</code>
 		</pre>
 	</figure>
-	<figure>
+<br>
+<p>
+const declarations for objects don’t prevent modification of those objects.<br>
+Example:
+</p>
+<figure>
 		<pre class="line-numbers padding-left"  ng-prism>
-<code class="language-javascript"> &lt;img ng-src="{{ country.flag }}" /&gt; </code>
+			<code class="language-javascript">
+const person = {
+	name: "Nicholas"
+};
+
+person.name = "Greg";
+// works
+
+
+person = {
+	name: "Greg"
+};
+// throws an error</code>
 		</pre>
 	</figure>
-
-
 </div>
