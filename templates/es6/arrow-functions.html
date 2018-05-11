@@ -2,37 +2,89 @@
 <div>
 	<h2>Arrow Functions</h2>
 	<p>
-		test.....
-		<br>
-test...	</p>
-
+			One of the most interesting new parts of ECMAScript 6 is the arrow function also called Fat Arrow Function.
+			Arrow functions are, as the name suggests, functions defined with a
+			new syntax that uses an arrow (=>). But arrow functions behave differently
+			than traditional JavaScript functions in a number of important ways.
+	</p>
+	<p>
+			The fat arrow function allows you to save a function without using the word function or return statement.<br>
+			Example:
+	</p>
 
 
 <div>
-	<h2>ng-src directive.</h2>
-	<p>Using AngularJS markup like {{hash}} in a src attribute doesn't work right: The browser will fetch from the URL with the literal text {{hash}} until AngularJS replaces the expression inside {{hash}}. The ngSrc directive solves this problem.</p>
-	<figure>
+<figure>
 		<pre class="line-numbers padding-left"  ng-prism>
 			<code class="language-javascript">
-var myApp = angular
-		.module('myModule', [])
-		.controller('registeredController', function ($scope) {
+//ES5
+var add = function(a, b) {
+	return a+b;
+}
+console.log(add(10, 5));
 
-												var country = {
-													flag: './img/GB.png'
-												};
-
-												$scope.country = country;
-
-											});
-			</code>
+//ES6 
+var anotherAdd = (a, b) => a+b;
+console.log(anotherAdd(10, 20));</code>
 		</pre>
 	</figure>
-	<figure>
+<br>
+<p>
+		When you want to provide a more traditional function body, perhaps
+		consisting of more than one expression, we need to wrap the function
+		body in curly braces and explicitly define a return value<br>
+		Example:
+</p>
+
+<figure>
 		<pre class="line-numbers padding-left"  ng-prism>
-<code class="language-javascript"> &lt;img ng-src="{{ country.flag }}" /&gt; </code>
+			<code class="language-javascript">
+var add = (a, b) => {
+	return a+b;
+}
+console.log(anotherAdd(10, 10));
+
+
+// equivalent to ES5:
+let add = function(a, b) {
+	return a + b;
+};</code>
 		</pre>
 	</figure>
+<br>
+
+<p>
+	If the function has only one argument, we don't have to surround it with parentheses
+</p>
+<br>
 
 
+<a class="btn btn-primary" href="http://jsbin.com/sofuro/edit?js,console" target="_blank">JS Bin</a>
+<a class="btn btn-primary" href="http://jsbin.com/gufogo/edit?js,console" target="_blank">JS Bin</a>
+<br>
+
+<p>
+	Arrow function that wants to return an object literal outside a function body must wrap the literal in parentheses.
+	Wrapping the object literal in parentheses signals that the curly braces
+	are an object literal instead of the function body.<br>
+	Example:	
+</p>
+
+<figure>
+		<pre class="line-numbers padding-left"  ng-prism>
+			<code class="language-javascript">
+let getTempItem1 = id => ({ id: id, name: "Temp 1" });
+
+// equivalent to ES5:
+let getTempItem2 = function(id) {
+	return {
+		id: id,
+		name: "Temp 2"
+	};
+};</code>
+		</pre>
+	</figure>
+<br>
+
+<a class="btn btn-primary" href="http://jsbin.com/ciharag/edit?js,console" target="_blank">JS Bin</a>
 </div>

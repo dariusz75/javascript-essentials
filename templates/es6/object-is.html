@@ -2,37 +2,34 @@
 <div>
 	<h2>Object.is() Method</h2>
 	<p>
-		test.....
-		<br>
-test...	</p>
+		ECMAScript 6 introduces the Object.is() method to remedy the
+		remaining inaccuracies of the identically equals operator. This method
+		accepts two arguments and returns true if the values are equivalent. Two
+		values are considered equivalent when they’re the same type and have the
+		same value.<br>
+		Examples:
+	</p>
 
 
 
 <div>
-	<h2>ng-src directive.</h2>
-	<p>Using AngularJS markup like {{hash}} in a src attribute doesn't work right: The browser will fetch from the URL with the literal text {{hash}} until AngularJS replaces the expression inside {{hash}}. The ngSrc directive solves this problem.</p>
-	<figure>
+<figure>
 		<pre class="line-numbers padding-left"  ng-prism>
 			<code class="language-javascript">
-var myApp = angular
-		.module('myModule', [])
-		.controller('registeredController', function ($scope) {
-
-												var country = {
-													flag: './img/GB.png'
-												};
-
-												$scope.country = country;
-
-											});
-			</code>
-		</pre>
-	</figure>
-	<figure>
-		<pre class="line-numbers padding-left"  ng-prism>
-<code class="language-javascript"> &lt;img ng-src="{{ country.flag }}" /&gt; </code>
+console.log(+0 == -0);  // true
+console.log(+0 === -0); // true
+console.log(Object.is(+0, -0)); // false
+console.log(NaN == NaN); // false
+console.log(NaN === NaN); // false
+console.log(Object.is(NaN, NaN)); // true
+console.log(5 == 5); // true
+console.log(5 == "5"); // true
+console.log(5 === 5); // true
+console.log(5 === "5"); // false
+console.log(Object.is(5, 5)); // true
+console.log(Object.is(5, "5")); // false</code>
 		</pre>
 	</figure>
 
-
+<a class="btn btn-primary" href="http://jsbin.com/dibire/edit?js,console" target="_blank">JS Bin</a>
 </div>

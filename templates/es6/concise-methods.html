@@ -2,37 +2,42 @@
 <div>
 	<h2>Objects - Concise Methods</h2>
 	<p>
-		test.....
-		<br>
-test...	</p>
-
-
+		ECMAScript 6 also improves the syntax for assigning methods to object
+		literals. In ECMAScript 5 and earlier, you must specify a name and then the
+		full function definition to add a method to an object, as follows:
+	</p>
 
 <div>
-	<h2>ng-src directive.</h2>
-	<p>Using AngularJS markup like {{hash}} in a src attribute doesn't work right: The browser will fetch from the URL with the literal text {{hash}} until AngularJS replaces the expression inside {{hash}}. The ngSrc directive solves this problem.</p>
-	<figure>
+<figure>
 		<pre class="line-numbers padding-left"  ng-prism>
 			<code class="language-javascript">
-var myApp = angular
-		.module('myModule', [])
-		.controller('registeredController', function ($scope) {
-
-												var country = {
-													flag: './img/GB.png'
-												};
-
-												$scope.country = country;
-
-											});
-			</code>
+var person = {
+	name: "Nicholas",
+	sayName: function() {
+		console.log(this.name);
+	}
+};</code>
 		</pre>
 	</figure>
-	<figure>
+<br>
+<p>
+	In ECMAScript 6, the syntax is made more concise by eliminating the
+	colon and the function keyword. That means you can rewrite the example
+	like this:
+</p>
+
+<figure>
 		<pre class="line-numbers padding-left"  ng-prism>
-<code class="language-javascript"> &lt;img ng-src="{{ country.flag }}" /&gt; </code>
+			<code class="language-javascript">
+var person = {
+	name: "Nicholas",
+	sayName() {
+		console.log(this.name);
+	}
+};</code>
 		</pre>
 	</figure>
-
+<br>
 
 </div>
+

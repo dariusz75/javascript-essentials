@@ -2,37 +2,37 @@
 <div>
 	<h2>Rest parameter</h2>
 	<p>
-		test.....
-		<br>
-test...	</p>
+		The rest parameter syntax allows us to represent an indefinite number of arguments as an array.<br>
+		If the last named argument of a function is prefixed with ..., it becomes an array with elements  supplied by the actual arguments passed to the function.<br>
+		Exaples:
+	</p>
 
 
 
 <div>
-	<h2>ng-src directive.</h2>
-	<p>Using AngularJS markup like {{hash}} in a src attribute doesn't work right: The browser will fetch from the URL with the literal text {{hash}} until AngularJS replaces the expression inside {{hash}}. The ngSrc directive solves this problem.</p>
-	<figure>
+<figure>
 		<pre class="line-numbers padding-left"  ng-prism>
 			<code class="language-javascript">
-var myApp = angular
-		.module('myModule', [])
-		.controller('registeredController', function ($scope) {
+function fun1(...theArgs) {
+	console.log(theArgs.length);
+}
 
-												var country = {
-													flag: './img/GB.png'
-												};
+fun1();  // 0
+fun1(5); // 1
+fun1(5, 6, 7); // 3
 
-												$scope.country = country;
+function multiply(multiplier, ...theArgs) {
+	return theArgs.map(function(element) {
+		return multiplier * element;
+	});
+}
 
-											});
-			</code>
+var arr = multiply(2, 1, 2, 3); 
+
+console.log(arr); // [2, 4, 6]</code>
 		</pre>
 	</figure>
-	<figure>
-		<pre class="line-numbers padding-left"  ng-prism>
-<code class="language-javascript"> &lt;img ng-src="{{ country.flag }}" /&gt; </code>
-		</pre>
-	</figure>
+<br>
 
-
+<a class="btn btn-primary" href="http://jsbin.com/gejadoj/edit?js,console" target="_blank">JS Bin</a>
 </div>

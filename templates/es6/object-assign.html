@@ -2,37 +2,58 @@
 <div>
 	<h2>Object.assign() Method</h2>
 	<p>
-		test.....
-		<br>
-test...	</p>
-
-
+		The Object.assign() method is used to copy the values of all enumerable own properties from one or more source objects to a target object. It will return the target object.
+		Properties in the target object will be overwritten by properties in the sources if they have the same key.  Later sources' properties will similarly overwrite earlier ones.  <br>
+		Example:
+	</p>
 
 <div>
-	<h2>ng-src directive.</h2>
-	<p>Using AngularJS markup like {{hash}} in a src attribute doesn't work right: The browser will fetch from the URL with the literal text {{hash}} until AngularJS replaces the expression inside {{hash}}. The ngSrc directive solves this problem.</p>
-	<figure>
+<figure>
 		<pre class="line-numbers padding-left"  ng-prism>
 			<code class="language-javascript">
-var myApp = angular
-		.module('myModule', [])
-		.controller('registeredController', function ($scope) {
+let defaults = {
+	container:       ".main",
+	isActiveClass:   ".is-active"
+};
 
-												var country = {
-													flag: './img/GB.png'
-												};
+let options1 = {
+	container:       ".main-container",
+	isActiveClass:   ".is-active-element"
+};
 
-												$scope.country = country;
+let options2 = {
+	isActiveClass:   ".is-active-content"
+};
 
-											});
-			</code>
+let settings = Object.assign({}, defaults, options1, options2);
+
+console.log(settings);</code>
 		</pre>
 	</figure>
-	<figure>
+
+<a class="btn btn-primary" href="http://jsbin.com/guligu/edit?js,console" target="_blank">JS Bin</a>
+
+<figure>
 		<pre class="line-numbers padding-left"  ng-prism>
-<code class="language-javascript"> &lt;img ng-src="{{ country.flag }}" /&gt; </code>
+			<code class="language-javascript">
+const object1 = {
+	a: 1,
+	b: 2,
+	c: 3
+};
+
+const object2 = {
+	d: 4,
+	e: 5,
+	f: 6
+};
+
+const object3 = Object.assign(object2, object1);
+
+console.log(object3);</code>
 		</pre>
 	</figure>
 
-
+<a class="btn btn-primary" href="http://jsbin.com/lahiyem/edit?js,console" target="_blank">JS Bin</a>
+<br>
 </div>

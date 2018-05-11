@@ -2,37 +2,108 @@
 <div>
 	<h2>Objects - Property Initializer Shorthand</h2>
 	<p>
-		test.....
-		<br>
-test...	</p>
-
-
+		In ECMAScript 5 and earlier, object literals were simply collections of
+		name-value pairs, meaning that some duplication could occur when property
+		values are initialized. <br>
+		Example:
+	</p>
 
 <div>
-	<h2>ng-src directive.</h2>
-	<p>Using AngularJS markup like {{hash}} in a src attribute doesn't work right: The browser will fetch from the URL with the literal text {{hash}} until AngularJS replaces the expression inside {{hash}}. The ngSrc directive solves this problem.</p>
-	<figure>
+<figure>
 		<pre class="line-numbers padding-left"  ng-prism>
 			<code class="language-javascript">
-var myApp = angular
-		.module('myModule', [])
-		.controller('registeredController', function ($scope) {
+function createPerson(name, age) {
+	return {
+		name: name,
+		age: age
+	};
+}
 
-												var country = {
-													flag: './img/GB.png'
-												};
-
-												$scope.country = country;
-
-											});
-			</code>
+var person1 = new createPerson('John', 20);
+console.log(person1);</code>
 		</pre>
 	</figure>
-	<figure>
+<br>
+<p>
+	The createPerson() function creates an object whose property names are
+	the same as the function parameter names. The result appears to be the
+	duplication of name and age, even though one is the name of an object property
+	and the other provides the value of that property. The key name in the
+	returned object is assigned the value contained in the variable name, and the
+	key age in the returned object is assigned the value contained in the variable
+	age.
+</p>
+<p>
+	In ECMAScript 6, you can eliminate the duplication that exists around
+	property names and local variables by using the property initializer shorthand
+	syntax. When an object property name is the same as the local variable
+	name, you can simply include the name without a colon and value.<br>
+	Example:
+</p>
+
+<figure>
 		<pre class="line-numbers padding-left"  ng-prism>
-<code class="language-javascript"> &lt;img ng-src="{{ country.flag }}" /&gt; </code>
+			<code class="language-javascript">
+function createAnotherPerson(name, age) {
+	return {
+		name,
+		age
+	};
+}
+
+var person2 = createAnotherPerson('Rob', 30);
+console.log(person2);</code>
 		</pre>
 	</figure>
 
+<a class="btn btn-primary" href="http://jsbin.com/zucipay/edit?js,console" target="_blank">JS Bin</a>
+<br>
 
+<p>
+	When a property in an object literal only has a name, the JavaScript
+	engine looks in the surrounding scope for a variable of the same name. If
+	it finds one, that variable’s value is assigned to the same name on the object
+	literal.<br>
+	Shorthand property syntax makes object literal initialization even more
+	succinct and helps to eliminate naming errors. Assigning a property with
+	the same name as a local variable is a very common pattern in JavaScript,
+	making this extension a welcome addition.
+</p>
+
+<p>
+	Another examples of creating objects	
+</p>
+<br>
+
+<figure>
+		<pre class="line-numbers padding-left"  ng-prism>
+			<code class="language-javascript">
+let name = 'Alex';
+let sur = 'Smith';
+let age = 9;
+
+let person = {name, sur, age};</code>
+		</pre>
+	</figure>
+
+<a class="btn btn-primary" href="http://jsbin.com/bewoqo/edit?js,console" target="_blank">JS Bin</a>
+<br>
+
+<p>And an example with using class</p>
+
+<figure>
+		<pre class="line-numbers padding-left"  ng-prism>
+			<code class="language-javascript">
+class Person {
+	constructor(providedFirstName, providedSureName) {
+		this.firstName = providedFirstName;
+		this.sureName = providedSureName;
+	}
+}
+
+var person1 = new Person('John', 'Travolta');</code>
+		</pre>
+	</figure>
+
+	<a class="btn btn-primary" href="https://jsbin.com/ceqihoy/edit?js,console" target="_blank">JS Bin</a>
 </div>

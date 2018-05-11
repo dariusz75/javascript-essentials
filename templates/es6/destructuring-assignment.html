@@ -2,37 +2,50 @@
 <div>
 	<h2>Destructuring assignment</h2>
 	<p>
-		test.....
-		<br>
-test...	</p>
-
-
+		The destructuring assignment syntax is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.
+		The destructuring assignment uses similar syntax, but on the left-hand side of the assignment to define what values to unpack from the sourced variable. <br>
+		Array destructuring example
+	</p>
 
 <div>
-	<h2>ng-src directive.</h2>
-	<p>Using AngularJS markup like {{hash}} in a src attribute doesn't work right: The browser will fetch from the URL with the literal text {{hash}} until AngularJS replaces the expression inside {{hash}}. The ngSrc directive solves this problem.</p>
-	<figure>
+<figure>
 		<pre class="line-numbers padding-left"  ng-prism>
 			<code class="language-javascript">
-var myApp = angular
-		.module('myModule', [])
-		.controller('registeredController', function ($scope) {
+var values = [20000, 40000, 60000, 80000];
 
-												var country = {
-													flag: './img/GB.png'
-												};
+var [low, medium, high] = values;
 
-												$scope.country = country;
-
-											});
-			</code>
+console.log(low); // 20000
+console.log(medium); // 40000
+console.log(high); // 60000</code>
 		</pre>
 	</figure>
-	<figure>
+
+<a class="btn btn-primary" href="http://jsbin.com/deyiviz/edit?js,console" target="_blank">JS Bin</a>
+<br>
+
+<p>Object destructuring example</p>
+<figure>
 		<pre class="line-numbers padding-left"  ng-prism>
-<code class="language-javascript"> &lt;img ng-src="{{ country.flag }}" /&gt; </code>
+			<code class="language-javascript">
+let values = {
+	first: 20000, 
+	second: 40000, 
+	third: 60000
+};
+
+let {first, second, third} = values;
+
+console.log(first); // 20000
+console.log(second); // 40000
+console.log(third); // 60000
+
+
+//A property can be unpacked from an object and assigned to a variable with a different name than the object property.
+
+let {first: firstRenamed, second: secondRenamed, third: thirdRenamed} = values;
+console.log(firstRenamed) //20000;</code>
 		</pre>
 	</figure>
-
-
+	<a class="btn btn-primary" href="http://jsbin.com/latagaz/edit?js,console" target="_blank">JS Bin</a>
 </div>

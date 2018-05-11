@@ -2,37 +2,28 @@
 <div>
 	<h2>Sets</h2>
 	<p>
-		test.....
-		<br>
-test...	</p>
-
-
+		Set objects are collections of values. You can iterate through the elements of a set in insertion order. A value in the Set may only occur once; it is unique in the Set's collection.<br>
+		Examples:
+	</p>
 
 <div>
-	<h2>ng-src directive.</h2>
-	<p>Using AngularJS markup like {{hash}} in a src attribute doesn't work right: The browser will fetch from the URL with the literal text {{hash}} until AngularJS replaces the expression inside {{hash}}. The ngSrc directive solves this problem.</p>
-	<figure>
+<figure>
 		<pre class="line-numbers padding-left"  ng-prism>
 			<code class="language-javascript">
-var myApp = angular
-		.module('myModule', [])
-		.controller('registeredController', function ($scope) {
+var mySet = new Set();
 
-												var country = {
-													flag: './img/GB.png'
-												};
+mySet.add(1); // Set [ 1 ]
+mySet.add(5); // Set [ 1, 5 ]
+mySet.add(5); // Set [ 1, 5 ]
+mySet.add('some text'); // Set [ 1, 5, 'some text' ]
+var o = {a: 1, b: 2};
+mySet.add(o);  // Set [ 1, 5, 'some text', {a: 1, b: 2} ]
 
-												$scope.country = country;
 
-											});
-			</code>
+for (let item of mySet) console.log(item);</code>
 		</pre>
 	</figure>
-	<figure>
-		<pre class="line-numbers padding-left"  ng-prism>
-<code class="language-javascript"> &lt;img ng-src="{{ country.flag }}" /&gt; </code>
-		</pre>
-	</figure>
+<br>
 
-
+<a class="btn btn-primary" href="http://jsbin.com/yasavec/edit?js,console" target="_blank">JS Bin</a>
 </div>
