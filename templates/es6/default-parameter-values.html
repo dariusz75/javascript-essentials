@@ -2,37 +2,71 @@
 <div>
 	<h2>Default Parameter Values</h2>
 	<p>
-		test.....
-		<br>
-test...	</p>
+		In ECMAScript 5 and earlier, you would likely use the following pattern to
+		create a function with default parameter values:
+	</p>
 
 
 
 <div>
-	<h2>ng-src directive.</h2>
-	<p>Using AngularJS markup like {{hash}} in a src attribute doesn't work right: The browser will fetch from the URL with the literal text {{hash}} until AngularJS replaces the expression inside {{hash}}. The ngSrc directive solves this problem.</p>
 	<figure>
 		<pre class="line-numbers padding-left"  ng-prism>
 			<code class="language-javascript">
-var myApp = angular
-		.module('myModule', [])
-		.controller('registeredController', function ($scope) {
+function makeRequest(url, title, callback) {
+  
+	url = url || 'https://www.bbc.co.uk/'
+	title = title || 'BBC';
+	callback = callback || function() {};
+	
+		console.log('The ' + title + '\'s url is ' + url);
+}
 
-												var country = {
-													flag: './img/GB.png'
-												};
+var paramFunction = function() {
+	console.log('paramFunction callback');
+}
 
-												$scope.country = country;
-
-											});
-			</code>
+makeRequest();
+makeRequest('https://www.111.com/', '111 Website', paramFunction());</code>
 		</pre>
 	</figure>
+	<br>
+	<p>
+		Or in a safer alternative, by checking the type of the argument using typeof.
+	</p>
 	<figure>
 		<pre class="line-numbers padding-left"  ng-prism>
-<code class="language-javascript"> &lt;img ng-src="{{ country.flag }}" /&gt; </code>
+<code class="language-javascript">
+function makeRequest2(url, title, callback) {
+
+	url = (typeof url !== "undefined") ? url : 'https://www.bbclondon.co.uk/';
+		title = (typeof title !== "undefined") ? title : 'BBC London';
+		callback = (typeof callback !== "undefined") ? callback : function() {};
+	
+		console.log('The ' + title + '\'s url is ' + url);
+}
+
+makeRequest2();
+makeRequest2('https://www.222.com/', '222 Website', paramFunction());</code>
 		</pre>
 	</figure>
+<br>
+<p>
+	ECMAScript 6 makes it easier to provide default values for parameters by supplying initializations that are used when the parameter isn’t formally passed. <br> 
+Example:
+</p>
+<figure>
+	<pre class="line-numbers padding-left"  ng-prism>
+<code class="language-javascript">
+function makeRequest3(url = 'https://www.bbclocal.co.uk/', title = 'BBC Local', callback = function() {}) {
+	console.log('The ' + title + '\'s url is ' + url);
+}
 
 
+makeRequest3();
+makeRequest3('https://www.333.co.uk/', '333 Website', paramFunction());</code>
+	</pre>
+</figure>
+<br>
+
+	<a class="btn btn-primary" href="http://jsbin.com/puquteb/edit?js,console" target="_blank">JS Bin</a>
 </div>
