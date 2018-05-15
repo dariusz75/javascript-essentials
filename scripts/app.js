@@ -409,7 +409,10 @@ var myApp = angular
 															{chapterName: 'Sets', url: '.sets'},
 															{chapterName: 'Classes', url: '.classes'}
 															];
-
+							var logo = {
+								es6: '../img/ES6_logo.png'
+							};
+							$scope.logo = logo;
 							$scope.chapters = chapters;
 						})
 						.controller('servicesController', function($scope) {
