@@ -410,7 +410,7 @@ var myApp = angular
 															{chapterName: 'Classes', url: '.classes'}
 															];
 							var logo = {
-								es6: '../img/ES6_logo.png'
+								es6: 'img/ES6_logo.png'
 							};
 							$scope.logo = logo;
 							$scope.chapters = chapters;
