@@ -389,6 +389,11 @@ var myApp = angular
 															{chapterName: 'Nested routing', url: '.nested-routing'} 
 															];
 
+							var logo = {
+								angular: 'img/AngularJS_logo.svg'
+							};
+
+							$scope.logo = logo;
 							$scope.chapters = chapters;
 						})
 						.controller('sidebarEs6Controller', function($scope) {
