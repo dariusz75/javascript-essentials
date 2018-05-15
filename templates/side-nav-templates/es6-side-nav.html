@@ -2,18 +2,8 @@
     <!-- Sidebar Holder -->
     <nav id="sidebar">
         <div class="sidebar-header">
-            <img src="../img/JavaScript_logo.svg" class="img-responsive" alt="Cinque Terre">
+            <img src="../img/ES6_logo.png" class="img-responsive" alt="Cinque Terre">
         </div>
-        <ul class="list-unstyled components">
-            <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Setup</a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
-                  <li><a href="#">Sub 1</a></li>
-                  <li><a href="#">Sub 2</a></li>
-                  <li><a href="#">Sub 3</a></li>
-                </ul>
-            </li>
-        </ul>
         <ul class="list-unstyled components">
           <li ng-repeat="chapter in chapters">
             <a ui-sref="{{ chapter.url }}">{{ chapter.chapterName }}</a>
@@ -24,13 +14,7 @@
 
     <!-- Page Content -->
     <div id="content" >
-        <h1>ES6 Fundamentals</h1>
-      <p>
-        The sixth edition, initially known as ECMAScript 6 (ES6) and later renamed to ECMAScript 2015 (ES2015) adds significant new syntax for writing complex applications, 
-        including classes and modules, but defines them semantically in the same terms as ECMAScript 5 strict mode. <br>
-        Other new features include: block bindings, Template Literals, iterators and for/of loops, object functionalities, arrow functions,  destructuring assignment,
-         binary data, array methods, collections (maps, sets and weak maps), promises, number and math enhancements, reflection, and proxies (metaprogramming for virtual objects and wrappers). 
-      </p>
+
         <ui-view></ui-view>
     </div> <!-- content end -->
   </div> <!-- wrapper end -->
