@@ -2,49 +2,108 @@
 <div>
 	<h2>Classes inheritance</h2>
 	<p>
-		JavaScript classes, introduced in ES6, are primarily syntactical sugar over JavaScript's existing prototype-based inheritance. The class syntax does not introduce a new object-oriented inheritance model to JavaScript.
-		Classes are in fact "special functions", and just as we can define function expressions and function declarations, the class syntax has two components: class expressions and class declarations.
+		The <strong>extends</strong> keyword is used in class declarations or class expressions to create a class which is a child of another class.
 	</p>
-
 <div>
 <figure>
 		<pre class="line-numbers padding-left"  ng-prism>
 			<code class="language-javascript">
-//ES5 closest equivalent to ES6 class - using object constructor
-function PersonType(name) {
-	this.name = name;
+class Project {
+	constructor(name) {
+		console.log(name + ' Test is working...');
+	}
 }
 
-PersonType.prototype.sayName = function() {
-	console.log(this.name);
-};
 
-var person = new PersonType("Nick");
-
-person.sayName(); // outputs "Nick"
-
-
-
-
-//ES6
-class PersonClass {
-
-	constructor(name) {
-		this.name = name;
-	}
-
-	sayName() {
-		console.log(this.name);
-	}
+class SoftwareProject extends Project {
 	
 }
 
-let person2 = new PersonClass("John");
-
-person2.sayName(); // outputs "John"</code>
+let example = new SoftwareProject('ES6');</code>
 		</pre>
 	</figure>
 
-<a class="btn btn-primary" href="http://jsbin.com/zenegay/edit?js,console" target="_blank">JS Bin</a>
+<a class="btn btn-primary" href="http://jsbin.com/moroyat/edit?js,console" target="_blank">JS Bin</a>
+<br>
+<p>More complex example:</p>
+<figure>
+	<pre class="line-numbers padding-left"  ng-prism>
+		<code class="language-javascript">
+class Animal {
+	constructor(name) {
+			this.type = "animal";
+			this.name = name;
+	}
+	eat() {
+			return this.name + " is eating";
+	}
+}
+
+
+Animal.prototype.sleep = function() {
+		return this.name + " is sleepping";
+}
+
+
+const Animal1 = new Animal("Dog");
+console.log(Animal1.eat());          //"Dog is eating"
+console.log(Animal1.sleep());        //"Dog is sleepping"
+
+
+
+class Bird extends Animal {
+		constructor(name) {
+				super(name);
+				this.type = "bird";
+		}
+		eat() {
+				const text = super.eat();
+				return text + " bread crumbs";
+		}
+		fly() {
+				return " can fly";
+		}
+}
+
+const Animal2 = new Bird("Parrot");
+console.log(Animal2.eat());          //"Parrot is eating bread crumbs"</code>
+	</pre>
+</figure>
+<p>
+	Our class extends both the constructor and the eat method. <br>
+	In both of these functions we have the super () statement. It is used to refer to the code of the class we inherit.<br>
+	If we want to expand the class's constructor (in our case we want to, because we add this.type), the first thing we have to do is use super () 
+	and give the arguments that the constructor in the extended class accepted<br><br>
+	Simple example of using super:
+</p>
+
+<figure>
+	<pre class="line-numbers padding-left"  ng-prism>
+		<code class="language-javascript">
+class Shape {
+	constructor(x, y) {
+		this.x = x;
+		this.y = y;
+	}
+	area() { 
+		return 'The area is ' + this.x * this.y;
+	}
+}
+
+
+class Rectangle extends Shape {
+		constructor(x, y, side) {
+				super(x, y);
+				this.side = side;
+		}
+}
+
+
+const figure1 = new Shape(2, 6);
+console.log(figure1.area()); //12</code>
+	</pre>
+</figure>
+
+<a class="btn btn-primary" href="http://jsbin.com/sitatif/edit?js,console" target="_blank">JS Bin</a>
 </div>
 
