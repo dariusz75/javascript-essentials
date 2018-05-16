@@ -1,0 +1,50 @@
+
+<div>
+	<h2>Classes inheritance</h2>
+	<p>
+		JavaScript classes, introduced in ES6, are primarily syntactical sugar over JavaScript's existing prototype-based inheritance. The class syntax does not introduce a new object-oriented inheritance model to JavaScript.
+		Classes are in fact "special functions", and just as we can define function expressions and function declarations, the class syntax has two components: class expressions and class declarations.
+	</p>
+
+<div>
+<figure>
+		<pre class="line-numbers padding-left"  ng-prism>
+			<code class="language-javascript">
+//ES5 closest equivalent to ES6 class - using object constructor
+function PersonType(name) {
+	this.name = name;
+}
+
+PersonType.prototype.sayName = function() {
+	console.log(this.name);
+};
+
+var person = new PersonType("Nick");
+
+person.sayName(); // outputs "Nick"
+
+
+
+
+//ES6
+class PersonClass {
+
+	constructor(name) {
+		this.name = name;
+	}
+
+	sayName() {
+		console.log(this.name);
+	}
+	
+}
+
+let person2 = new PersonClass("John");
+
+person2.sayName(); // outputs "John"</code>
+		</pre>
+	</figure>
+
+<a class="btn btn-primary" href="http://jsbin.com/zenegay/edit?js,console" target="_blank">JS Bin</a>
+</div>
+

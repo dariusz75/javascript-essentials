@@ -172,6 +172,10 @@ var myApp = angular
 									url: '/classes',
 									templateUrl: 'templates/es6/classes.html'
 								})
+								.state('es6.classes-inheritance', {
+									url: '/classes-inheritance',
+									templateUrl: 'templates/es6/classes-inheritance.html'
+								})
 								//$urlRouterProvider.otherwise('/home');
 						})
 						.controller('moduleController', function($scope) {
@@ -412,7 +416,8 @@ var myApp = angular
 															{chapterName: 'Object.assign() Method', url: '.object-assign'},
 															{chapterName: 'Destructuring assignment', url: '.destructuring-assignment'},
 															{chapterName: 'Sets', url: '.sets'},
-															{chapterName: 'Classes', url: '.classes'}
+															{chapterName: 'Classes - Introduction', url: '.classes'},
+															{chapterName: 'Classes - Inheritance', url: '.classes-inheritance'}
 															];
 							var logo = {
 								es6: 'img/ES6_logo.png'
